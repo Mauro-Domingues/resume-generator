@@ -1,20 +1,20 @@
-#experience {
+#specializations {
   flex-direction: column;
   align-items: flex-start;
 }
 
-#experience>.title {
+#specializations>.title {
   align-self: center;
 }
 
-#experience>.experience-list {
+#specializations>.specializations-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1.5625rem;
 }
 
-#experience>.experience-list>li>article {
+#specializations>.specializations-list>li>article {
   display: flex;
   padding-left: 0.625rem;
   flex-direction: column;
@@ -22,19 +22,19 @@
   gap: 0.9375rem;
 }
 
-#experience>.experience-list>li>article>.occupation-title {
+#specializations>.specializations-list>li>article>.specializations-title {
   vertical-align: middle;
   font-size: 1.125rem;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
-#experience>.experience-list>li>article>.occupation-title svg {
+#specializations>.specializations-list>li>article>.specializations-title svg {
   width: 1.25rem;
   height: 1.25rem;
   padding-top: 0.125rem;
 }
 
-#experience>.experience-list>li>article>.content {
+#specializations>.specializations-list>li>article>.content {
   padding-left: 1.875rem;
   display: grid;
   grid-template-columns: 5rem 1fr;
@@ -42,6 +42,6 @@
   align-items: start;
 }
 
-#experience>.experience-list>li>article>.content>p:nth-child(2) {
+#specializations>.specializations-list>li>article>.content>p:nth-child(2) {
   font-weight: bold;
 }

@@ -1,18 +1,18 @@
-{{#if specialization}}
-<section id="specialization">
+{{#if specializations}}
+<section id="specializations">
   <h1 class="title">Especialização</h1>
-  <ul class="specialization-list">
-    {{#each specialization}}
+  <ul class="specializations-list">
+    {{#each specializations}}
     <li>
-      <article class="specialization">
-        <h1 class="specialization-title">
+      <article class="specializations">
+        <h1 class="specializations-title">
           {{> diplomaIcon}} {{this.title}}
         </h1>
         <div class="content">
           <p>Instituição: </p>
           <p>{{this.institution}}</p>
-          <p>Período: </p>
-          <p>{{this.period}}</p>
+          <p>Duração: </p>
+          <p>{{this.duration}} horas</p>
           <p>Descrição: </p>
           <p>{{this.description}}</p>
         </div>

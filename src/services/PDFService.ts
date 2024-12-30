@@ -1,15 +1,16 @@
-import { launch } from 'puppeteer';
+import { IGenerateDTO } from 'dtos/IGeneratePDFDTO';
+import { Browser, launch } from 'puppeteer';
 
-export class PuppeteerProvider {
-  #browser;
+export class PDFService {
+  #browser!: Browser;
 
-  async #init() {
+  async #init(): Promise<void> {
     if (!this.#browser) {
       /**
        * @description If the API doesn't run local, comment out lines 18 and 22 (or install chromium on the pc).
        */
       this.#browser = await launch({
-        headless: 'new',
+        headless: true,
         // executablePath: '/snap/bin/chromium', // @coment
         handleSIGINT: true,
         handleSIGHUP: true,
@@ -38,47 +39,20 @@ export class PuppeteerProvider {
     }
   }
 
-  async #close() { return this.#browser.close() }
-
-  // pagination: {
-  //   styles: Record<string, string | number>;
-  // };
-  #getPagination(
-    pagination,
-  ) {
-    const styles = Object.entries(pagination?.styles ?? {})
-      .map(([key, value]) => {
-        return String.prototype.concat(key, ':', String(value), ';');
-      })
-      .join(' ');
-
-    return {
-      displayHeaderFooter: true,
-      headerTemplate: `<div style="${styles}">Página <span class="pageNumber"></span> de <span class="totalPages"></span></div>`,
-    };
-  }
-
-  // {
-  //   template: string;
-  //   pagination?: {
-  //     styles: Record<string, string | number>;
-  //   };
-  // }
-  async generate(data) {
+  async generate(data: IGenerateDTO): Promise<Uint8Array> {
     if (!this.#browser) {
       await this.#init();
     }
+
     const page = await this.#browser.newPage();
 
     await page.setContent(data.template, { waitUntil: 'domcontentloaded' });
+
     const pdf = await page.pdf({
       format: 'A4',
-      ...(data.pagination && this.#getPagination(data.pagination)),
     });
 
     await page.close({ runBeforeUnload: false });
-
-    await this.#close()
 
     return pdf;
   }

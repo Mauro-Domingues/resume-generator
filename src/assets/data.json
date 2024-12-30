@@ -1,0 +1,194 @@
+{
+  "templateConfig": {
+    "name": "default",
+    "monochrome": true,
+    "fontColor": "#706f6f",
+    "fontSize": 1
+  },
+  "headerSection": {
+    "header": {
+      "name": "Mauro Domingues"
+    },
+    "contact": {
+      "whatsapp": {
+        "value": "5535991248514"
+      },
+      "github": {
+        "value": "https://google.com"
+      },
+      "email": {
+        "value": "maurinho.villa@hotmail.com"
+      },
+      "address": {
+        "value": "Pouso Alegre - Minas Gerais"
+      },
+      "linkedin": {
+        "value": "https://linkedin.com"
+      },
+      "personal": [
+        {
+          "value": "portifólio.com",
+          "ref": "https://google.com"
+        }
+      ]
+    }
+  },
+  "targetSection": {
+    "position": "Desenvolvedor back-end"
+  },
+  "aboutSection": {
+    "descriptions": [
+      "Desenvolvedor web focado em back-end com sólida experiência em design e construção de APIs em node.js e typescript, utilizando preferencialmente o express e o typeorm.",
+      "Possuo experiência com bancos de dados relacionais e não relacionais, conteinerização utilizando docker e infraestrutura com nginx, além de conhecimento em front- end com react, next e angular.",
+      "Já atuei em dezenas de produtos, desde sistemas legados ao SDLC de novos projetos e também sou responsável pela gestão e acompanhamento de novos desenvolvedores na equipe.",
+      "Possuo uma boa curva de aprendizado, muita atenção a detalhes e nível de inglês intermediário/ avançado."
+    ]
+  },
+  "projectSection": {
+    "projects": [
+      {
+        "title": "Desenvolvedor de Software",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "link": {
+          "ref": "https://www.bing.com/search?filters=ufn%3a%22Google+Tradutor%22+sid%3a%22f2f29c28-d913-bc81-d01f-05ae81c0d0e3%22&pglt=931&q=google+tradutor&cvid=bed1d4e790224ed3867f5f0eee88db49&gs_lcrp=EgRlZGdlKgYIABAuGEAyBggAEC4YQDIGCAEQRRg7MgYIAhBFGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEAAYQDIGCAcQABhAMgYICBAAGEDSAQg5MTMzajBqMagCALACAA&FORM=ANNTA1&PC=U531&form=TTSREF&isTTRefreshQuery=1",
+          "value": "https://google.com"
+        }
+      },
+      {
+        "title": "Desenvolvedor de Software",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo."
+      }
+    ]
+  },
+  "skillSection": {
+    "skills": [
+      {
+        "title": "ingles",
+        "level": "advanced"
+      },
+      {
+        "title": "espanhol",
+        "level": "average"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "ingles",
+        "level": "advanced"
+      },
+      {
+        "title": "espanhol",
+        "level": "average"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "ingles",
+        "level": "advanced"
+      },
+      {
+        "title": "espanhol",
+        "level": "average"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "ingles",
+        "level": "advanced"
+      },
+      {
+        "title": "espanhol",
+        "level": "average"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "ingles",
+        "level": "advanced"
+      },
+      {
+        "title": "espanhol",
+        "level": "average"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      },
+      {
+        "title": "informática",
+        "level": "basic"
+      }
+    ]
+  },
+  "graduationSection": {
+    "graduations": [
+      {
+        "title": "Desenvolvedor de Software",
+        "institution": "Rise Studio",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "startsAt": "2020-10-11T03:06:28.000Z",
+        "endsAt": "2023-05-14T03:00:00.000Z"
+      },
+      {
+        "title": "Desenvolvedor de Software",
+        "institution": "Rise Studio",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "currently": true,
+        "startsAt": "2022-09-12T03:06:28.000Z"
+      },
+      {
+        "title": "Desenvolvedor de Software",
+        "institution": "Rise Studio",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "startsAt": "2019-12-10T03:06:28.000Z",
+        "endsAt": "2021-09-10T03:06:28.000Z"
+      }
+    ]
+  },
+  "specializationSection": {
+    "specializations": [
+      {
+        "title": "Desenvolvedor de Software",
+        "institution": "Rise Studio",
+        "duration": "100",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo."
+      },
+      {
+        "title": "Desenvolvedor de Software",
+        "institution": "Rise Studio",
+        "duration": "40",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo."
+      }
+    ]
+  },
+  "experienceSection": {
+    "experiences": [
+      {
+        "title": "Desenvolvedor de Software",
+        "company": "Rise Studio",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "currently": true,
+        "startsAt": "2022-09-12T03:06:28.000Z"
+      },
+      {
+        "title": "Desenvolvedor de Software",
+        "company": "Rise Studio",
+        "description": "Desenvolvi soluções personalizadas para diversos clientes e colaborei com equipes multidisciplinares. Além disso, orientei novos membros da equipe, promovendo um ambiente de crescimento contínuo.",
+        "startsAt": "2020-01-10T03:06:28.000Z",
+        "endsAt": "2021-12-10T03:06:28.000Z"
+      }
+    ]
+  }
+}
