@@ -10,12 +10,12 @@ export class Graduation {
       const div = document.createElement('div');
       div.className = 'item';
       div.innerHTML = `
-        <input class="title" placeholder="Título" required/>
-        <input class="institution" placeholder="Instituição" required/>
-        <input type="date" class="startsAt" placeholder="Início" required/>
+        <input class="title" placeholder="Título"/>
+        <input class="institution" placeholder="Instituição"/>
+        <input type="date" class="startsAt" placeholder="Início"/>
         <input type="date" class="endsAt" placeholder="Fim"/>
         <label> Cursa Atualmente? <input type="checkbox" class="currently"/></label>
-        <textarea class="description" placeholder="Descrição" required></textarea>
+        <textarea class="description" placeholder="Descrição"></textarea>
         <button class="remove">Remover</button>
       `;
 

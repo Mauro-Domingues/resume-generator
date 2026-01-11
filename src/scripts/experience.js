@@ -11,12 +11,12 @@ export class Experience {
       const div = document.createElement('div');
       div.className = 'item';
       div.innerHTML = `
-        <input class="title" placeholder="Cargo" value="${data?.title ?? ''}"/>
-        <input class="company" placeholder="Empresa" value="${data?.company ?? ''}"/>
-        <input type="date" class="startsAt" value="${data?.startsAt ?? ''}"/>
-        <input type="date" class="endsAt" value="${data?.endsAt ?? ''}" style="display: ${data?.currently ? 'none' : 'block'}"/>
-        <label>Trabalha Atualmente? <input type="checkbox" class="currently" ${data?.currently ? 'checked' : ''}/></label>
-        <textarea class="description" placeholder="Descrição">${data?.description ?? ''}</textarea>
+        <input class="title" placeholder="Cargo"/>
+        <input class="company" placeholder="Empresa"/>
+        <input type="date" class="startsAt"/>
+        <input type="date" class="endsAt"/>
+        <label>Trabalha Atualmente? <input type="checkbox" class="currently"/></label>
+        <textarea class="description" placeholder="Descrição"></textarea>
       `;
 
       const keywordsSub = document.createElement('div');

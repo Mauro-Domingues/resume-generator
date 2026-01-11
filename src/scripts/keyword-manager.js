@@ -9,11 +9,11 @@ export class KeywordManager {
     });
   }
 
-  static createKeywordElement(text = '') {
+  static createKeywordElement() {
     const div = document.createElement('div');
     div.className = 'keyword-tag';
     div.innerHTML = `
-      <input class="keyword-input" type="text" placeholder="Keyword" value="${text}" />
+      <input class="keyword-input" type="text" placeholder="Keyword"/>
       <button type="button" class="keyword-remove">×</button>
     `;
     div.querySelector('.keyword-remove').addEventListener('click', () => div.remove());

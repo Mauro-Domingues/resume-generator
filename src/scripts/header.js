@@ -35,8 +35,8 @@ export class Header {
     const div = document.createElement('div');
     div.className = 'item';
     div.innerHTML = `
-      <input class="title" placeholder="Nome do Site (e.g., Portfolio)" value="${data?.value ?? ''}" />
-      <input class="url" placeholder="URL do Site" value="${data?.ref ?? ''}" />
+      <input class="title" placeholder="Nome do Site (e.g., Portfolio)"/>
+      <input class="url" placeholder="URL do Site"/>
       <button class="remove">Remover</button>
     `;
     div.querySelector('.remove').addEventListener('click', () => div.remove());

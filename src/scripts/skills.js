@@ -10,7 +10,7 @@ export class Skills {
       const div = document.createElement('div');
       div.className = 'item';
       div.innerHTML = `
-        <input class="title" placeholder="Habilidade" value="${data?.title ?? ''}"/>
+        <input class="title" placeholder="Habilidade"/>
         <select class="level">
           <option value="basic">básico</option>
           <option value="basic-average">iniciante</option>
