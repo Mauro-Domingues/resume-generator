@@ -23,9 +23,7 @@ export class Skills {
         <button class="remove">Remover</button>
       `;
 
-      if (data?.level) div.querySelector('.level').value = data.level;
       div.querySelector('.remove').addEventListener('click', () => div.remove());
-
       this.#skillsList.appendChild(div);
     });
   }
