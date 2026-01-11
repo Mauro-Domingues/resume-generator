@@ -29,7 +29,7 @@ export class DataCollector {
         personal: Array.from(document.querySelectorAll('#personalLinks .item'))?.map(item => ({
           value: document.querySelector('.title', item)?.value ?? undefined,
           ref: document.querySelector('.url', item)?.value ?? undefined,
-        })).fillter(link => link.value || link.ref),
+        }))?.filter(link => link.value || link.ref),
       },
     };
 
@@ -44,7 +44,7 @@ export class DataCollector {
       skills: Array.from(document.querySelectorAll('#skillsList .item'))?.map(item => ({
         title: item.querySelector('.title', item)?.value ?? undefined,
         level: item.querySelector('.level', item)?.value ?? undefined,
-      })).fillter(skill => skill.title && skill.level),
+      }))?.filter(skill => skill.title && skill.level),
       keywords: KeywordManager.getKeywordsFromContainer('skillsKeywords'),
     };
 
