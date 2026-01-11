@@ -1,0 +1,11 @@
+{{#if descriptions}}
+<section id="about">
+  <h1 class="title">{{aboutTexts.title}}</h1>
+  <span class="keywords">{{keywords}}</span>
+  <ul class="description">
+    {{#each descriptions}}
+    <li>{{this}}</li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}

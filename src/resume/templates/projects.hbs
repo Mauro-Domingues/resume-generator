@@ -1,0 +1,30 @@
+{{#if projects}}
+<section id="projects">
+  <h1 class="title">{{projectTexts.title}}</h1>
+  <ul class="project-list">
+    {{#each projects}}
+    <li>
+      <article class="project">
+        {{#if this.banner}}
+        <figure>
+          <img class="project-image" src="{{this.banner}}">
+        </figure>
+        {{/if}}
+        <div class="content">
+          <h1 class="project-title">
+            {{this.title}}
+            {{#if this.link}}
+            <a href="{{this.link.ref}}" target="_blank">
+              ({{this.link.value}})
+            </a>
+            {{/if}}
+          </h1>
+          <span class="keywords">{{this.keywords}}</span>
+          <p>{{this.description}}</p>
+        </div>
+      </article>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}

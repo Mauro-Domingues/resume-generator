@@ -1,0 +1,25 @@
+{{#if experiences}}
+<section id="experiences">
+  <h1 class="title">{{experienceTexts.title}}</h1>
+  <ul class="experiences-list">
+    {{#each experiences}}
+    <li>
+      <article class="occupation">
+        <h1 class="occupation-title">
+          {{> pinIcon}} {{this.title}}
+        </h1>
+        <span class="keywords">{{this.keywords}}</span>
+        <div class="content">
+          <p>{{../experienceTexts.content.title}}: </p>
+          <p>{{this.company}}</p>
+          <p>{{../experienceTexts.content.period}}: </p>
+          <p>{{this.period}}</p>
+          <p>{{../experienceTexts.content.description}}: </p>
+          <p>{{this.description}}</p>
+        </div>
+      </article>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}

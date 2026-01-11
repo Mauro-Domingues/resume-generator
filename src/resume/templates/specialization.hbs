@@ -1,0 +1,25 @@
+{{#if specializations}}
+<section id="specializations">
+  <h1 class="title">{{specializationTexts.title}}</h1>
+  <ul class="specializations-list">
+    {{#each specializations}}
+    <li>
+      <article class="specializations">
+        <h1 class="specializations-title">
+          {{> diplomaIcon}} {{this.title}}
+        </h1>
+        <span class="keywords">{{this.keywords}}</span>
+        <div class="content">
+          <p>{{../specializationTexts.content.title}}: </p>
+          <p>{{this.institution}}</p>
+          <p>{{../specializationTexts.content.duration}}: </p>
+          <p>{{this.duration}} {{../specializationTexts.content.time}}</p>
+          <p>{{../specializationTexts.content.description}}: </p>
+          <p>{{this.description}}</p>
+        </div>
+      </article>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}

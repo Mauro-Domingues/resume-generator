@@ -1,0 +1,25 @@
+{{#if graduations}}
+<section id="graduations">
+  <h1 class="title">{{graduationTexts.title}}</h1>
+  <ul class="graduations-list">
+    {{#each graduations}}
+    <li>
+      <article class="graduations">
+        <h1 class="graduations-title">
+          {{> institutionIcon}} {{this.title}}
+        </h1>
+        <span class="keywords">{{this.keywords}}</span>
+        <div class="content">
+          <p>{{../graduationTexts.content.title}}: </p>
+          <p>{{this.institution}}</p>
+          <p>{{../graduationTexts.content.period}}: </p>
+          <p>{{this.period}}</p>
+          <p>{{../graduationTexts.content.description}}: </p>
+          <p>{{this.description}}</p>
+        </div>
+      </article>
+    </li>
+    {{/each}}
+  </ul>
+</section>
+{{/if}}
