@@ -34,11 +34,9 @@ export class FormActions {
       debounceTimer = setTimeout(async () => await this.updatePreview(), 500);
     };
 
-    const inputs = document.querySelectorAll('input, textarea, select');
-    inputs.forEach(input => {
-      input.addEventListener('input', updatePreviewDebounced);
-      input.addEventListener('change', updatePreviewDebounced);
-    });
+    const main = document.querySelector('main');
+    main.addEventListener('input', updatePreviewDebounced);
+    main.addEventListener('change', updatePreviewDebounced);
 
     await this.updatePreview();
   }
