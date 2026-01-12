@@ -24,7 +24,7 @@ class Main {
     KeywordManager.setupKeywordContainer('aboutKeywords', 'aboutKeywordsAdd');
     KeywordManager.setupKeywordContainer('targetKeywords', 'targetKeywordsAdd');
 
-    FormActions.setupAllActions();
+    new FormActions().setupAllActions();
   }
 }
 

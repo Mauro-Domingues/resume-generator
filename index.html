@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Construtor de Currículo</title>
     <link rel="stylesheet" href="./src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js" defer></script>
     <script src="./src/scripts/index.js" type="module" defer></script>
   </head>
   <body>
@@ -150,14 +151,13 @@
         
         <aside class="preview-container">
           <div class="preview-controls">
-            <!-- <button id="preview" class="btn-primary">Pré visualizar</button> -->
-            <!-- <button id="downloadPdf" class="btn-primary">Download PDF</button> -->
+            <button id="downloadPdf" class="btn-primary">Download PDF</button>
             <button id="copyJson" class="btn-primary">Copiar JSON</button>
           </div>
-          <!-- <div id="output">
+          <div id="output">
             <h3>Preview</h3>
             <iframe id="previewFrame"></iframe>
-          </div> -->
+          </div>
         </aside>
 
       </div>

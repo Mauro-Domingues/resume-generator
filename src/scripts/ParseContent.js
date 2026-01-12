@@ -1,11 +1,7 @@
-import { readFileSync } from 'node:fs';
-import Handlebars from 'handlebars';
-
 export class ParseContent {
-  parsePartial({ name, file, variables }) {
-    const templateFileContent = readFileSync(file, {
-      encoding: 'utf-8',
-    });
+  async parsePartial({ name, file, variables }) {
+    const response = await fetch(file);
+    const templateFileContent = await response.text();
 
     const partialTemplate = Handlebars.compile(templateFileContent);
     const parsedPartialTemplate = partialTemplate(variables);
@@ -13,10 +9,9 @@ export class ParseContent {
     Handlebars.registerPartial(name, parsedPartialTemplate);
   }
 
-  parseTemplate({ file, variables }) {
-    const templateFileContent = readFileSync(file, {
-      encoding: 'utf-8',
-    });
+  async parseTemplate({ file, variables }) {
+    const response = await fetch(file);
+    const templateFileContent = await response.text();
 
     const parseTemplate = Handlebars.compile(templateFileContent, {
       compat: true,

@@ -1,31 +1,37 @@
 import { DataCollector } from './data-collector.js';
 // import { PDFService } from './PDFService.js';
-// import { RegisterTemplate } from './RegisterTemplate.js';
+import { RegisterTemplate } from './registerTemplate.js';
 
 export class FormActions {
   registerTemplate
   PDFService
 
   constructor() {
-    // this.registerTemplate = new RegisterTemplate();
+    this.registerTemplate = new RegisterTemplate();
     // this.PDFService = new PDFService();
   }
 
-  static updatePreview() {
+  async updatePreview() {
     const variables = DataCollector.collect();
 
     const previewFrame = document.querySelector('#previewFrame');
 
     if (previewFrame) {
-      // previewFrame.srcDoc = this.registerTemplate.getContent(variables);
+      const htmlContent = await this.registerTemplate.getContent(variables);
+
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      previewFrame.src = url;
+
+      console.log('Preview atualizado:', htmlContent.length, 'caracteres');
     }
   }
 
-  static setupAutoPreview() {
+  async setupAutoPreview() {
     let debounceTimer;
     const updatePreviewDebounced = () => {
       clearTimeout(debounceTimer);
-      debounceTimer = setTimeout(() => this.updatePreview(), 500);
+      debounceTimer = setTimeout(async () => await this.updatePreview(), 500);
     };
 
     const inputs = document.querySelectorAll('input, textarea, select');
@@ -34,19 +40,24 @@ export class FormActions {
       input.addEventListener('change', updatePreviewDebounced);
     });
 
-    this.updatePreview();
+    await this.updatePreview();
   }
 
-  static setupPreviewButton() {
+  async setupPreviewButton() {
     const previewBtn = document.querySelector('#preview');
     if (!previewBtn) return;
 
     previewBtn.addEventListener('click', async () => {
-      this.updatePreview();
+      const variables = DataCollector.collect();
+      const htmlContent = await this.registerTemplate.getContent(variables);
+
+      const newWindow = window.open();
+      newWindow.document.write(htmlContent);
+      newWindow.document.close();
     });
   }
 
-  static setupDownloadPDFButton() {
+  setupDownloadPDFButton() {
     const copyJsonBtn = document.querySelector('#downloadPdf');
     if (!copyJsonBtn) return;
 
@@ -84,7 +95,7 @@ export class FormActions {
     })
   }
 
-  static setupCopyJsonButton() {
+  setupCopyJsonButton() {
     const copyJsonBtn = document.querySelector('#copyJson');
     if (!copyJsonBtn) return;
 
@@ -101,7 +112,7 @@ export class FormActions {
     });
   }
 
-  static setupAllActions() {
+  setupAllActions() {
     this.setupAutoPreview();
     this.setupDownloadPDFButton();
     this.setupCopyJsonButton();

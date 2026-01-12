@@ -1,6 +1,4 @@
-import { resolve } from 'node:path';
-import { cwd } from 'node:process';
-import { ParseContent } from './ParseContent.js';
+import { ParseContent } from './parseContent.js';
 
 export class RegisterTemplate {
   #parseContent
@@ -8,8 +6,8 @@ export class RegisterTemplate {
   #basePath
 
   constructor() {
-    this.#parseContent = new ParseContent();
-    this.#basePath = resolve(cwd());
+    this.#parseContent = new ParseContent()
+    this.#basePath = this.#resolve('./src');
     this.#languageConfig = {
       enUs: {
         html: { title: 'Curriculum', language: 'en-us' },
@@ -104,6 +102,10 @@ export class RegisterTemplate {
     };
   }
 
+  #resolve(...paths) {
+    return paths.join('/');
+  }
+
   #formatPhoneNumber(phone) {
     if (phone.length === 13) {
       return phone.replace(/^(\d{2})(\d{2})(\d{5})(\d{4})$/, '+$1 ($2) $3-$4');
@@ -182,57 +184,57 @@ export class RegisterTemplate {
     }));
   }
 
-  #registerIcons({ templateConfig }) {
-    this.#parseContent.parsePartial({
+  async #registerIcons({ templateConfig }) {
+    await this.#parseContent.parsePartial({
       name: 'diplomaIcon',
-      file: resolve(this.#basePath, 'images', 'diploma-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'diploma-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'envelopeIcon',
-      file: resolve(this.#basePath, 'images', 'envelope-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'envelope-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'githubIcon',
-      file: resolve(this.#basePath, 'images', 'github-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'github-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'institutionIcon',
-      file: resolve(this.#basePath, 'images', 'institution-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'institution-icon.svg'),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'linkedinIcon',
-      file: resolve(this.#basePath, 'images', 'linkedin-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'linkedin-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'locationIcon',
-      file: resolve(this.#basePath, 'images', 'location-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'location-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'pinIcon',
-      file: resolve(this.#basePath, 'images', 'pin-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'pin-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'siteIcon',
-      file: resolve(this.#basePath, 'images', 'site-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'site-icon.svg'),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'whatsappIcon',
-      file: resolve(this.#basePath, 'images', 'whatsapp-icon.svg'),
+      file: this.#resolve(this.#basePath, 'images', 'whatsapp-icon.svg'),
       variables: templateConfig,
     });
   }
 
-  #registerCss({ templateConfig }) {
-    this.#parseContent.parsePartial({
+  async #registerCss({ templateConfig }) {
+    await this.#parseContent.parsePartial({
       name: 'rootStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -241,13 +243,13 @@ export class RegisterTemplate {
       ),
       variables: templateConfig,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'baseStyle',
-      file: resolve(this.#basePath, 'resume', 'styles', 'styles.css'),
+      file: this.#resolve(this.#basePath, 'resume', 'styles', 'styles.css'),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'resumeStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -255,9 +257,9 @@ export class RegisterTemplate {
         'resume.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'headerStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -265,9 +267,9 @@ export class RegisterTemplate {
         'header.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'aboutStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -275,9 +277,9 @@ export class RegisterTemplate {
         'about.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'skillsStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -285,9 +287,9 @@ export class RegisterTemplate {
         'skills.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'targetStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -295,9 +297,9 @@ export class RegisterTemplate {
         'target.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'graduationStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -305,9 +307,9 @@ export class RegisterTemplate {
         'graduation.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'specializationStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -315,9 +317,9 @@ export class RegisterTemplate {
         'specialization.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'projectsStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -325,9 +327,9 @@ export class RegisterTemplate {
         'projects.css',
       ),
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'experienceStyle',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'styles',
@@ -337,7 +339,7 @@ export class RegisterTemplate {
     });
   }
 
-  #registerHbs({
+  async #registerHbs({
     templateConfig,
     aboutSection,
     experienceSection,
@@ -348,9 +350,9 @@ export class RegisterTemplate {
     specializationSection,
     targetSection,
   }) {
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'contactSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'contact.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'contact.hbs'),
       variables: {
         ...headerSection.contact,
         ...(headerSection?.contact?.whatsapp?.value &&
@@ -364,32 +366,32 @@ export class RegisterTemplate {
         }),
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'headerSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'header.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'header.hbs'),
       variables: headerSection,
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'aboutSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'about.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'about.hbs'),
       variables: {
         ...aboutSection,
         keywords: this.#joinKeywords(aboutSection.keywords),
         aboutTexts: this.#languageConfig[templateConfig.language].aboutTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'targetSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'target.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'target.hbs'),
       variables: {
         ...targetSection,
         keywords: this.#joinKeywords(targetSection.keywords),
         targetTexts: this.#languageConfig[templateConfig.language].targetTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'experienceSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'experience.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'experience.hbs'),
       variables: {
         experiences: this.#prepareItems(
           templateConfig,
@@ -399,9 +401,9 @@ export class RegisterTemplate {
           this.#languageConfig[templateConfig.language].experienceTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'graduationSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'graduation.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'graduation.hbs'),
       variables: {
         graduations: this.#prepareItems(
           templateConfig,
@@ -411,9 +413,9 @@ export class RegisterTemplate {
           this.#languageConfig[templateConfig.language].graduationTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'specializationSection',
-      file: resolve(
+      file: this.#resolve(
         this.#basePath,
         'resume',
         'templates',
@@ -430,18 +432,18 @@ export class RegisterTemplate {
           this.#languageConfig[templateConfig.language].specializationTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'skillSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'skills.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'skills.hbs'),
       variables: skillSection.skills && {
         skills: skillSection.skills,
         keywords: this.#joinKeywords(skillSection.keywords),
         skillTexts: this.#languageConfig[templateConfig.language].skillTexts,
       },
     });
-    this.#parseContent.parsePartial({
+    await this.#parseContent.parsePartial({
       name: 'projectSection',
-      file: resolve(this.#basePath, 'resume', 'templates', 'projects.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'projects.hbs'),
       variables: projectSection.projects && {
         projects: projectSection.projects.map(project => {
           return {
@@ -455,13 +457,13 @@ export class RegisterTemplate {
     });
   }
 
-  getContent(variables) {
-    this.#registerIcons(variables);
-    this.#registerCss(variables);
-    this.#registerHbs(variables);
+  async getContent(variables) {
+    await this.#registerIcons(variables);
+    await this.#registerCss(variables);
+    await this.#registerHbs(variables);
 
     return this.#parseContent.parseTemplate({
-      file: resolve(this.#basePath, 'resume', 'templates', 'index.hbs'),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'index.hbs'),
       variables: {
         ...variables,
         htmlTexts: this.#languageConfig[variables.templateConfig.language].html,
