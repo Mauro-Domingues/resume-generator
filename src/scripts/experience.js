@@ -23,6 +23,10 @@ export class Experience {
       keywordsSub.className = 'keywords-sub';
       div.appendChild(keywordsSub);
 
+      const keywordsLabel = document.createElement('label');
+      keywordsLabel.textContent = 'Palavras-chave';
+      keywordsSub.appendChild(keywordsLabel);
+
       const keywordsAddBtn = document.createElement('button');
       keywordsAddBtn.type = 'button';
       keywordsAddBtn.className = 'keywords-add';

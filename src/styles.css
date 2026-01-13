@@ -505,12 +505,97 @@ main {
   right: -13px;
 }
 
+.banner-remove {
+  top: -7px;
+  right: 4px;
+}
+
 .keyword-tag .keyword-remove {
   top: -7px;
 }
 
 .keyword-tag-inline .keyword-remove {
   top: -9px;
+}
+
+.keywords-add,
+.btn-add-keyword,
+.add-item {
+  padding: 6px 10px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: var(--space-sm);
+  transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.2px;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+}
+
+
+.keywords-add::before,
+.btn-add-keyword::before,
+.add-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.description-tag,
+.image-input-wrapper {
+  position: relative;
+}
+
+.keywords-add::after,
+.btn-add-keyword::after,
+.add-item::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+  border-radius: var(--radius-md);
+}
+
+.keywords-add:hover:not(.loading),
+.btn-add-keyword:hover:not(.loading),
+.add-item:hover:not(.loading) {
+  box-shadow: 0 1px 32px rgba(99, 102, 241, 0.35);
+}
+
+.keywords-add:hover:not(.loading)::before,
+.btn-add-keyword:hover:not(.loading)::before,
+.add-item:hover:not(.loading)::before {
+  opacity: 1;
+}
+
+.keywords-add:hover:not(.loading)::after,
+.btn-add-keyword:hover:not(.loading)::after,
+.add-item:hover:not(.loading)::after {
+  opacity: 1;
+}
+
+.keywords-add:active,
+.btn-add-keyword:active,
+.add-item:active {
+  transform: translateY(-1px);
+}
+
+.keywords-container {
+  margin-top: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 /* .item .remove {

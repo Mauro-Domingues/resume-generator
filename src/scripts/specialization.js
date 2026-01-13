@@ -20,6 +20,10 @@ export class Specialization {
       const keywordsSub = document.createElement('div');
       keywordsSub.className = 'keywords-sub';
 
+      const keywordsLabel = document.createElement('label');
+      keywordsLabel.textContent = 'Palavras-chave';
+      keywordsSub.appendChild(keywordsLabel);
+
       const keywordsAddBtn = document.createElement('button');
       keywordsAddBtn.type = 'button';
       keywordsAddBtn.className = 'keywords-add';

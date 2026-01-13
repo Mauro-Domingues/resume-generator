@@ -15,7 +15,7 @@ export class Project {
         <textarea class="description" placeholder="Descrição"></textarea>
         <div class="image-input-wrapper">
           <input type="file" class="banner" accept="image/*" data-base64="" />
-          <button type="button" class="banner-remove">Clear Image</button>
+          <button type="button" class="banner-remove remove"></button>
         </div>
         <input class="link-value" placeholder="Display Link" />
         <input class="link-ref" placeholder="Link URL" />
@@ -24,6 +24,10 @@ export class Project {
       const keywordsSub = document.createElement('div');
       keywordsSub.className = 'keywords-sub';
       div.appendChild(keywordsSub);
+
+      const keywordsLabel = document.createElement('label');
+      keywordsLabel.textContent = 'Palavras-chave';
+      keywordsSub.appendChild(keywordsLabel);
 
       const keywordsAddBtn = document.createElement('button');
       keywordsAddBtn.type = 'button';
