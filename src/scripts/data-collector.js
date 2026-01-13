@@ -40,7 +40,7 @@ export class DataCollector {
     };
 
     const aboutSection = {
-      descriptions: Array.from(document.querySelectorAll('#aboutDescriptions .description-tag'))
+      descriptions: Array.from(document.querySelectorAll('#aboutDescriptions .description-tag textarea'))
         ?.map(input => input.value?.trim())
         .filter(Boolean),
       keywords: KeywordManager.getKeywordsFromContainer('aboutKeywords'),

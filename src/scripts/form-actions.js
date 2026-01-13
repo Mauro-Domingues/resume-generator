@@ -42,16 +42,25 @@ export class FormActions {
   }
 
   async setupDownloadPDFButton() {
-    // const previewBtn = document.querySelector('#downloadPdf');
-    // if (!previewBtn) return;
+    const previewBtn = document.querySelector('#downloadPdf');
+    if (!previewBtn) return;
 
-    // previewBtn.addEventListener('click', async () => {
-    // const variables = DataCollector.collect();
-    // const htmlContent = await this.registerTemplate.getContent(variables);
+    previewBtn.addEventListener('click', async () => {
+      const variables = DataCollector.collect();
+      const htmlContent = await this.registerTemplate.getContent(variables);
 
-    // await this.PDFService.generate(htmlContent)
-    // });
+      const printWindow = window.open('', '_blank');
+      printWindow.document.write(htmlContent);
+      printWindow.document.close();
+
+      printWindow.onafterprint = () => {
+        printWindow.close();
+      };
+
+      printWindow.print();
+    });
   }
+
 
   setupCopyJsonButton() {
     const copyJsonBtn = document.querySelector('#copyJson');

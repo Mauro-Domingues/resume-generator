@@ -714,8 +714,7 @@ main {
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
 }
 
-#preview,
-#downloadPdf {
+#preview {
   flex: 1;
   padding: 14px 20px;
   border: none;
@@ -731,10 +730,6 @@ main {
   position: relative;
   overflow: hidden;
   letter-spacing: 0.4px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
-}
-
-#preview {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   color: white;
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);
@@ -777,51 +772,7 @@ main {
   transform: translateY(-1px);
 }
 
-#downloadPdf {
-  background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
-  color: white;
-  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
-}
-
-#downloadPdf::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#downloadPdf::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: -1;
-  border-radius: var(--radius-md);
-}
-
-#downloadPdf:hover:not(.loading) {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.35);
-}
-
-#downloadPdf:hover:not(.loading)::before {
-  opacity: 1;
-}
-
-#downloadPdf:hover:not(.loading)::after {
-  opacity: 1;
-}
-
-#downloadPdf:active {
-  transform: translateY(-1px);
-}
-
-#preview.loading,
-#downloadPdf.loading {
+#preview.loading {
   opacity: 0.6;
   pointer-events: none;
 }
@@ -872,6 +823,11 @@ main {
 
 .preview-container {
   padding: var(--space-xl) var(--space-2xl);
+}
+
+button#downloadPdf {
+  background: var(--color-primary);
+  color: white;
 }
 
 /* ====================================
@@ -1041,9 +997,5 @@ html {
 
   .actions {
     width: 100%;
-  }
-
-  #output {
-    margin-bottom: 0;
   }
 }
