@@ -1,5 +1,4 @@
 import { DataCollector } from './data-collector.js';
-import { PDFService } from './PDFService.js';
 import { RegisterTemplate } from './registerTemplate.js';
 
 export class FormActions {
@@ -8,7 +7,6 @@ export class FormActions {
 
   constructor() {
     this.registerTemplate = new RegisterTemplate();
-    // this.PDFService = new PDFService();
   }
 
   async updatePreview() {
@@ -22,8 +20,6 @@ export class FormActions {
       const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       previewFrame.src = url;
-
-      console.log('Preview atualizado:', htmlContent.length, 'caracteres');
     }
   }
 
@@ -67,15 +63,9 @@ export class FormActions {
     if (!copyJsonBtn) return;
 
     copyJsonBtn.addEventListener('click', async () => {
-      try {
-        const variables = DataCollector.collect();
-        const jsonString = JSON.stringify(variables, null, 2);
-        await navigator.clipboard.writeText(jsonString);
-        alert('JSON copiado para a área de transferência!');
-      } catch (err) {
-        console.error('Copy JSON error:', err);
-        alert('Erro ao copiar JSON: ' + err.message);
-      }
+      const variables = DataCollector.collect();
+      const jsonString = JSON.stringify(variables, null, 2);
+      await navigator.clipboard.writeText(jsonString);
     });
   }
 
