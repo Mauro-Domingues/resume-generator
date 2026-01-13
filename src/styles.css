@@ -1033,6 +1033,10 @@ html {
     max-height: 400px;
   }
 
+  #output {
+    width: 100%;
+  }
+
   .actions {
     width: 100%;
   }
