@@ -229,6 +229,10 @@ header p {
    MAIN LAYOUT
    ==================================== */
 
+#main-container {
+  display: flex;
+}
+
 main {
   display: flex;
   gap: var(--space-xl);
@@ -467,9 +471,36 @@ main {
   transform: translateY(-1px);
 }
 
+.keyword-tag-inline,
+.keyword-tag {
+  position: relative;
+}
+
 /* ====================================
    BUTTONS
    ==================================== */
+
+.keyword-remove {
+  position: absolute;
+  border: none;
+  background: transparent;
+  right: 4px;
+  cursor: pointer;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  font-size: 50px;
+  margin: 0;
+  color: #DC2626;
+}
+
+.keyword-tag .keyword-remove {
+  top: -7px;
+}
+
+.keyword-tag-inline .keyword-remove {
+  top: -9px;
+}
 
 .item .remove {
   padding: 8px 14px;
@@ -587,8 +618,7 @@ main {
 }
 
 #preview,
-#downloadPdf,
-#copyJson {
+#downloadPdf {
   flex: 1;
   padding: 14px 20px;
   border: none;
@@ -650,15 +680,13 @@ main {
   transform: translateY(-1px);
 }
 
-#downloadPdf,
-#copyJson {
+#downloadPdf {
   background: linear-gradient(135deg, var(--color-success) 0%, #059669 100%);
   color: white;
   box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }
 
-#downloadPdf::before,
-#copyJson::before {
+#downloadPdf::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -667,8 +695,7 @@ main {
   transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#downloadPdf::after,
-#copyJson::after {
+#downloadPdf::after {
   content: '';
   position: absolute;
   inset: -4px;
@@ -679,30 +706,25 @@ main {
   border-radius: var(--radius-md);
 }
 
-#downloadPdf:hover:not(.loading),
-#copyJson:hover:not(.loading) {
+#downloadPdf:hover:not(.loading) {
   transform: translateY(-3px);
   box-shadow: 0 12px 32px rgba(16, 185, 129, 0.35);
 }
 
-#downloadPdf:hover:not(.loading)::before,
-#copyJson:hover:not(.loading)::before {
+#downloadPdf:hover:not(.loading)::before {
   opacity: 1;
 }
 
-#downloadPdf:hover:not(.loading)::after,
-#copyJson:hover:not(.loading)::after {
+#downloadPdf:hover:not(.loading)::after {
   opacity: 1;
 }
 
-#downloadPdf:active,
-#copyJson:active {
+#downloadPdf:active {
   transform: translateY(-1px);
 }
 
 #preview.loading,
-#downloadPdf.loading,
-#copyJson.loading {
+#downloadPdf.loading {
   opacity: 0.6;
   pointer-events: none;
 }
@@ -719,6 +741,7 @@ main {
   border-radius: var(--radius-xl);
   overflow: hidden;
   height: 297mm;
+  width: 214.5mm;
   box-shadow: var(--shadow-lg);
   margin-bottom: 70px;
   border: 1px solid var(--color-border);
@@ -748,6 +771,10 @@ main {
   width: 100%;
   background: var(--color-bg-primary);
   display: block;
+}
+
+.preview-container {
+  padding: var(--space-xl) var(--space-2xl);
 }
 
 /* ====================================
@@ -861,6 +888,12 @@ html {
   color: white;
 }
 
+@media (max-width:1438px) {
+  #main-container {
+    flex-direction: column;
+  }
+}
+
 @media (max-width: 1024px) {
   main {
     gap: var(--space-lg);
@@ -868,7 +901,10 @@ html {
   }
 
   .panel {
-    width: 400px;
+    padding: var(--space-lg);
+  }
+
+  .preview-container {
     padding: var(--space-lg);
   }
 
@@ -897,8 +933,12 @@ html {
   }
 
   .panel {
-    width: 100%;
     max-height: 400px;
+  }
+
+  #output {
+    width: 100%;
+    min-width: 500px;
   }
 
   .actions {

@@ -5,7 +5,7 @@ export class Navigation {
   }
 
   #setupNavigation() {
-    const navButtons = document.querySelectorAll('#nav button');
+    const navButtons = document.querySelectorAll('#nav button:not([data-ignore])');
     navButtons.forEach(button => {
       button.addEventListener('click', () => {
         const section = button.dataset.section;
