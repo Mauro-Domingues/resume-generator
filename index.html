@@ -6,7 +6,18 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Construtor de Currículo</title>
   <link rel="icon" type="image/svg+xml" href="./src/images/fav-icon.svg">
-  <link rel="stylesheet" href="./src/styles.css" />
+  <link rel="stylesheet" href="./src/styles/critical.css" />
+  <link rel="stylesheet" href="./src/styles/navigation.css" />
+  <link rel="stylesheet" href="./src/styles/components.css" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="./src/styles/buttons.css" media="print" onload="this.media='all'" />
+
+  <link rel="stylesheet" href="./src/styles/responsive.css" media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet" href="./src/styles/components.css" />
+    <link rel="stylesheet" href="./src/styles/buttons.css" />
+
+    <link rel="stylesheet" href="./src/styles/responsive.css" />
+  </noscript>
   <script src="./src/scripts/index.js" type="module" defer></script>
 </head>
 
@@ -27,7 +38,7 @@
       <button data-section="experience" class="nav-btn">Experiência</button>
       <button id="downloadPdf" data-ignore="true" class="nav-btn">Baixar Currículo</button>
     </nav>
-    
+
     <div id="main-container" class="container">
       <main class="main-content">
         <section class="panel" id="template">
@@ -47,8 +58,8 @@
             </label>
           </div>
           <div class="form-group">
-              <label><input type="checkbox" id="templateMonochrome" /> Monochrome</label>
-            </div>
+            <label><input type="checkbox" id="templateMonochrome" /> Monochrome</label>
+          </div>
           <div class="form-group">
             <label>Cor da fonte
               <input type="color" id="templateFontColor" value="#706f6f" />
@@ -96,7 +107,8 @@
           <div class="form-group">
             <label>Descrição</label>
             <div id="aboutDescriptions" class="descriptions-container"></div>
-            <button type="button" id="aboutDescriptionsAdd" class="btn-add-description add-item">+ Adicionar Parárafo</button>
+            <button type="button" id="aboutDescriptionsAdd" class="btn-add-description add-item">+ Adicionar
+              Parárafo</button>
             <div id="aboutKeywords" class="keywords-container"></div>
             <button type="button" id="aboutKeywordsAdd" class="btn-add-keyword">+ Adicionar palavra-chave</button>
           </div>
@@ -149,7 +161,7 @@
           <button id="experienceAdd" class="add-item">+ Adicionar Experiência</button>
         </section>
 
-   
+
       </main>
 
       <aside class="preview-container">

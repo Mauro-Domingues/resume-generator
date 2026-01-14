@@ -1,0 +1,287 @@
+/* ====================================
+   PANELS / FORMS
+   ==================================== */
+
+.panel {
+    width: 500px;
+    border: 1px solid var(--color-border);
+    padding: var(--space-2xl);
+    display: none;
+    max-height: calc(100vh - 280px);
+    overflow-y: auto;
+    background: var(--color-bg-primary);
+    border-radius: 16px;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12),
+        0 0 1px rgba(99, 102, 241, 0.5);
+    animation: panelSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.panel.active::before {
+    opacity: 1;
+}
+
+@keyframes panelSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.panel.active {
+    display: block;
+}
+
+.panel h2 {
+    margin-bottom: var(--space-xl);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-primary);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-primary-light);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    letter-spacing: -0.3px;
+}
+
+/* ====================================
+   FORM GROUPS
+   ==================================== */
+
+.form-group {
+    margin-bottom: var(--space-xl);
+    position: relative;
+}
+
+.form-group::before {
+    content: '';
+    position: absolute;
+    left: -12px;
+    top: 0;
+    width: 3px;
+    height: 24px;
+    background: linear-gradient(180deg, var(--color-primary) 0%, transparent 100%);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.form-group:focus-within::before {
+    opacity: 1;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--color-text-primary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 14px;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+    outline: none;
+    position: relative;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--color-text-tertiary);
+    opacity: 0.7;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--color-primary);
+    background: var(--color-bg-hover);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15),
+        0 0 12px rgba(99, 102, 241, 0.2),
+        inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    transform: translateY(-1px);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.form-group input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: var(--space-sm);
+    cursor: pointer;
+    accent-color: var(--color-primary);
+}
+
+.form-group input[type="color"] {
+    padding: 4px;
+    height: 44px;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+}
+
+/* ====================================
+   ITEM CARDS (Dynamic Items)
+   ==================================== */
+
+.item {
+    border: 1px solid var(--color-border-light);
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, rgba(99, 102, 241, 0.03) 100%);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+    border-radius: 12px;
+    border-left: 4px solid var(--color-primary);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+    position: relative;
+    /* overflow: hidden; */
+    backdrop-filter: blur(2px);
+}
+
+.item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(30px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.item:hover {
+    border-left-color: var(--color-accent);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15),
+        0 0 1px rgba(99, 102, 241, 0.5);
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+}
+
+.item:hover::before {
+    opacity: 1;
+}
+
+.item input,
+.item select,
+.item textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 13px;
+    background: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-md);
+    transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+    outline: none;
+    position: relative;
+}
+
+.item input:focus,
+.item select:focus,
+.item textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1),
+        0 0 8px rgba(99, 102, 241, 0.15);
+    background: linear-gradient(135deg, var(--color-bg-hover) 0%, var(--color-bg-primary) 100%);
+    transform: translateY(-1px);
+}
+
+.keyword-tag-inline,
+.keyword-tag {
+    position: relative;
+}
+
+/* ====================================
+   OUTPUT / PREVIEW
+   ==================================== */
+
+#output {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-primary);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    height: 297mm;
+    width: 214.5mm;
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 70px;
+    border: 1px solid var(--color-border);
+}
+
+#output h3 {
+    margin: 0;
+    padding: var(--space-lg) var(--space-xl);
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-bottom: 2px solid var(--color-primary-light);
+    font-size: 15px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.4px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+#output h3::before {
+    content: '✨';
+    margin-right: var(--space-sm);
+}
+
+#previewFrame {
+    flex: 1;
+    border: none;
+    width: 100%;
+    background: var(--color-bg-primary);
+    display: block;
+}
+
+.preview-container {
+    padding: var(--space-xl) var(--space-2xl);
+}
+
+button#downloadPdf {
+    background: var(--color-primary);
+    color: white;
+}
