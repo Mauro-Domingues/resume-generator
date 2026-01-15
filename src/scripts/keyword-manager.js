@@ -5,32 +5,54 @@ export class KeywordManager {
 
     addBtn?.addEventListener('click', (event) => {
       event.preventDefault();
-      container?.appendChild(this.createKeywordElement());
+      this.#addKeyword(container);
     });
   }
 
-  static createKeywordElement() {
-    const div = document.createElement('div');
-    div.className = 'keyword-tag';
-    div.innerHTML = `
-      <input class="keyword-input" type="text" placeholder="palavra-chave"/>
-      <button type="button" class="keyword-remove"></button>
-    `;
-    div.querySelector('.keyword-remove').addEventListener('click', () => div.remove());
-    return div;
+  static init(containerId, keywords = []) {
+    const container = document.querySelector(`#${containerId}`);
+    if (!container) return;
+
+    keywords.forEach(keyword => this.#addKeyword(container, keyword));
+  }
+
+  static #addKeyword(container, value = '') {
+    const kwDiv = document.createElement('div');
+    kwDiv.className = 'keyword-tag';
+    kwDiv.setAttribute('role', 'group');
+    kwDiv.setAttribute('aria-label', 'Palavra-chave');
+
+    const input = document.createElement('input');
+    input.className = 'keyword-input';
+    input.type = 'text';
+    input.placeholder = 'palavra-chave';
+    input.setAttribute('aria-label', 'Texto da palavra-chave');
+    if (value) input.value = value;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'keyword-remove';
+    removeBtn.setAttribute('aria-label', 'Remover palavra-chave');
+    removeBtn.addEventListener('click', () => kwDiv.remove());
+
+    kwDiv.appendChild(input);
+    kwDiv.appendChild(removeBtn);
+    container?.appendChild(kwDiv);
   }
 
   static getKeywordsFromContainer(containerId) {
     const container = document.querySelector(`#${containerId}`);
     if (!container) return [];
+
     return Array.from(container.querySelectorAll('.keyword-input'))
       .map(input => input.value.trim())
       .filter(Boolean);
   }
 
   static getKeywordsFromItem(item) {
-    const keywordsSub = item.querySelector('.keywords-sub');
+    const keywordsSub = item?.querySelector('.keywords-sub');
     if (!keywordsSub) return [];
+
     return Array.from(keywordsSub.querySelectorAll('.keyword-input'))
       .map(input => input.value.trim())
       .filter(Boolean);

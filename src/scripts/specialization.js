@@ -1,51 +1,109 @@
 export class Specialization {
   #specializationList;
-  #AddButton;
+  #addButton;
 
   constructor() {
     this.#specializationList = document.querySelector('#specializationList');
-    this.#AddButton = document.querySelector('#specializationAdd');
+    this.#addButton = document.querySelector('#specializationAdd');
+    this.#setupEventListeners();
+  }
 
-    this.#AddButton?.addEventListener('click', () => {
-      const div = document.createElement('div');
-      div.className = 'item';
-      div.innerHTML = `
-        <input class="title" placeholder="Título"/>
-        <input class="institution" placeholder="Instituição"/>
-        <input type="number" class="duration" placeholder="Duração (horas)"/>
-        <textarea class="description" placeholder="Descrição"></textarea>
-        <button class="remove"></button>
-      `;
+  init(specializations = []) {
+    specializations.forEach(spec => this.#addItem(spec));
+  }
 
-      const keywordsSub = document.createElement('div');
-      keywordsSub.className = 'keywords-sub';
+  #setupEventListeners() {
+    this.#addButton?.addEventListener('click', () => this.#addItem());
+  }
 
-      const keywordsLabel = document.createElement('label');
-      keywordsLabel.textContent = 'Palavras-chave';
-      keywordsSub.appendChild(keywordsLabel);
+  #addItem(data = null) {
+    const item = document.createElement('div');
+    item.className = 'item';
+    item.setAttribute('role', 'group');
+    item.setAttribute('aria-label', 'Item de especialização');
 
-      const keywordsAddBtn = document.createElement('button');
-      keywordsAddBtn.type = 'button';
-      keywordsAddBtn.className = 'keywords-add';
-      keywordsAddBtn.textContent = '+ Adicionar palavra-chave';
+    item.innerHTML = `
+      <input class="title" placeholder="Título" aria-label="Título da especialização" />
+      <input class="institution" placeholder="Instituição" aria-label="Nome da instituição" />
+      <input type="number" class="duration" placeholder="Duração (horas)" aria-label="Duração em horas" />
+      <textarea class="description" placeholder="Descrição" aria-label="Descrição da especialização"></textarea>
+    `;
 
-      keywordsAddBtn.addEventListener('click', (event) => {
-        event.preventDefault();
-        const kwDiv = document.createElement('div');
-        kwDiv.className = 'keyword-tag-inline';
-        kwDiv.innerHTML = `
-          <input class="keyword-input" type="text" placeholder="palavra-chave" />
-          <button type="button" class="keyword-remove"></button>
-        `;
-        kwDiv.querySelector('.keyword-remove').addEventListener('click', () => kwDiv.remove());
-        keywordsSub.appendChild(kwDiv);
-      });
+    const keywordsSub = document.createElement('div');
+    keywordsSub.className = 'keywords-sub';
+    keywordsSub.setAttribute('role', 'group');
+    keywordsSub.setAttribute('aria-label', 'Palavras-chave da especialização');
 
-      div.appendChild(keywordsSub);
-      div.appendChild(keywordsAddBtn);
+    const keywordsLabel = document.createElement('label');
+    keywordsLabel.textContent = 'Palavras-chave';
+    keywordsSub.appendChild(keywordsLabel);
 
-      div.querySelector('.remove').addEventListener('click', () => div.remove());
-      this.#specializationList?.appendChild(div);
+    item.appendChild(keywordsSub);
+
+    const keywordsAddBtn = document.createElement('button');
+    keywordsAddBtn.type = 'button';
+    keywordsAddBtn.className = 'keywords-add';
+    keywordsAddBtn.textContent = '+ Adicionar palavra-chave';
+    keywordsAddBtn.setAttribute('aria-label', 'Adicionar palavra-chave');
+    keywordsAddBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.#addKeyword(keywordsSub);
     });
+
+    item.appendChild(keywordsAddBtn);
+
+    const removeBtn = document.createElement('button');
+    removeBtn.className = 'remove';
+    removeBtn.setAttribute('aria-label', 'Remover especialização');
+    removeBtn.addEventListener('click', () => item.remove());
+
+    item.appendChild(removeBtn);
+
+    if (data) {
+      this.#populateItem(item, data);
+    }
+
+    this.#specializationList?.appendChild(item);
+  }
+
+  #addKeyword(container, value = '') {
+    const kwDiv = document.createElement('div');
+    kwDiv.className = 'keyword-tag-inline';
+    kwDiv.setAttribute('role', 'group');
+    kwDiv.setAttribute('aria-label', 'Palavra-chave');
+
+    const input = document.createElement('input');
+    input.className = 'keyword-input';
+    input.type = 'text';
+    input.placeholder = 'palavra-chave';
+    input.setAttribute('aria-label', 'Texto da palavra-chave');
+    if (value) input.value = value;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'keyword-remove';
+    removeBtn.setAttribute('aria-label', 'Remover palavra-chave');
+    removeBtn.addEventListener('click', () => kwDiv.remove());
+
+    kwDiv.appendChild(input);
+    kwDiv.appendChild(removeBtn);
+    container.appendChild(kwDiv);
+  }
+
+  #populateItem(item, data) {
+    const setInputValue = (selector, value) => {
+      if (value !== undefined) {
+        const el = item.querySelector(selector);
+        if (el) el.value = value;
+      }
+    };
+
+    setInputValue('.title', data.title);
+    setInputValue('.institution', data.institution);
+    setInputValue('.duration', data.duration);
+    setInputValue('.description', data.description);
+
+    const keywordsSub = item.querySelector('.keywords-sub');
+    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, kw));
   }
 }

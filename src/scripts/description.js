@@ -1,24 +1,45 @@
 export class Description {
   #container;
-  #addBtn;
+  #addButton;
 
   constructor() {
     this.#container = document.querySelector('#aboutDescriptions');
-    this.#addBtn = document.querySelector('#aboutDescriptionsAdd');
+    this.#addButton = document.querySelector('#aboutDescriptionsAdd');
+    this.#setupEventListeners();
+  }
 
-    this.#addBtn?.addEventListener('click', (event) => {
+  init(descriptions = []) {
+    descriptions.forEach(desc => this.#addItem(desc));
+  }
+
+  #setupEventListeners() {
+    this.#addButton?.addEventListener('click', (event) => {
       event.preventDefault();
-
-      const div = document.createElement('div');
-      div.className = 'description-tag';
-      div.innerHTML = `
-        <textarea class="description-input" placeholder="Descrição"></textarea>
-        <button type="button" class="description-remove remove"></button>
-      `;
-
-      div.querySelector('.description-remove').addEventListener('click', () => div.remove());
-
-      this.#container?.appendChild(div);
+      this.#addItem();
     });
+  }
+
+  #addItem(value = '') {
+    const item = document.createElement('div');
+    item.className = 'description-tag';
+    item.setAttribute('role', 'group');
+    item.setAttribute('aria-label', 'Parágrafo de descrição');
+
+    const textarea = document.createElement('textarea');
+    textarea.className = 'description-input';
+    textarea.placeholder = 'Descrição';
+    textarea.setAttribute('aria-label', 'Texto da descrição');
+    if (value) textarea.value = value;
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.className = 'description-remove remove';
+    removeBtn.setAttribute('aria-label', 'Remover descrição');
+    removeBtn.addEventListener('click', () => item.remove());
+
+    item.appendChild(textarea);
+    item.appendChild(removeBtn);
+
+    this.#container?.appendChild(item);
   }
 }

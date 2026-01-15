@@ -4,8 +4,8 @@ export class PersistenceManager {
     static save(data) {
         try {
             localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(data));
-        } catch (e) {
-            console.error('Error saving state to localStorage', e);
+        } catch (error) {
+            console.error('Erro ao salvar dados:', error);
         }
     }
 
@@ -13,13 +13,17 @@ export class PersistenceManager {
         try {
             const saved = localStorage.getItem(this.#STORAGE_KEY);
             return saved ? JSON.parse(saved) : null;
-        } catch (e) {
-            console.error('Error loading state from localStorage', e);
+        } catch (error) {
+            console.error('Erro ao carregar dados:', error);
             return null;
         }
     }
 
     static clear() {
-        localStorage.removeItem(this.#STORAGE_KEY);
+        try {
+            localStorage.removeItem(this.#STORAGE_KEY);
+        } catch (error) {
+            console.error('Erro ao limpar dados:', error);
+        }
     }
 }

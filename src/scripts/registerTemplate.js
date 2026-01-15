@@ -1,32 +1,42 @@
 import { ParseContent } from './parseContent.js';
 
 export class RegisterTemplate {
-  #parseContent
-  #languageConfig
-  #basePath
+  #parseContent;
+  #languageConfig;
+  #basePath;
 
   constructor() {
-    this.#parseContent = new ParseContent()
-    this.#basePath = this.#resolve('./src');
-    this.#languageConfig = {
+    this.#parseContent = new ParseContent();
+    this.#basePath = './src';
+    this.#languageConfig = this.#initializeLanguageConfig();
+  }
+
+  async getContent(variables) {
+    await this.#registerIcons(variables);
+    await this.#registerCss(variables);
+    await this.#registerHbs(variables);
+
+    return this.#parseContent.parseTemplate({
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'index.hbs'),
+      variables: {
+        ...variables,
+        htmlTexts: this.#languageConfig[variables.templateConfig.language].html,
+      },
+    });
+  }
+
+  #initializeLanguageConfig() {
+    return {
       enUs: {
         html: { title: 'Curriculum', language: 'en-us' },
         aboutTexts: { title: 'About Me' },
         experienceTexts: {
           title: 'Experience',
-          content: {
-            title: 'Company',
-            period: 'Period',
-            description: 'Description',
-          },
+          content: { title: 'Company', period: 'Period', description: 'Description' },
         },
         graduationTexts: {
           title: 'Education',
-          content: {
-            title: 'Institution',
-            period: 'Period',
-            description: 'Description',
-          },
+          content: { title: 'Institution', period: 'Period', description: 'Description' },
         },
         headerTexts: { about: { title: 'About Me' } },
         period: { format: 'en-US', untilNow: 'to present' },
@@ -45,12 +55,7 @@ export class RegisterTemplate {
         },
         specializationTexts: {
           title: 'Specialization',
-          content: {
-            title: 'Institution',
-            duration: 'Duration',
-            time: 'hours',
-            description: 'Description',
-          },
+          content: { title: 'Institution', duration: 'Duration', time: 'hours', description: 'Description' },
         },
         targetTexts: { title: 'Objective' },
       },
@@ -59,19 +64,11 @@ export class RegisterTemplate {
         aboutTexts: { title: 'Sobre mim' },
         experienceTexts: {
           title: 'Experiência',
-          content: {
-            title: 'Empresa',
-            period: 'Período',
-            description: 'Descrição',
-          },
+          content: { title: 'Empresa', period: 'Período', description: 'Descrição' },
         },
         graduationTexts: {
           title: 'Formação',
-          content: {
-            title: 'Instituição',
-            period: 'Período',
-            description: 'Descrição',
-          },
+          content: { title: 'Instituição', period: 'Período', description: 'Descrição' },
         },
         headerTexts: { about: { title: 'Sobre mim' } },
         period: { format: 'pt-BR', untilNow: 'até o momento' },
@@ -90,12 +87,7 @@ export class RegisterTemplate {
         },
         specializationTexts: {
           title: 'Especialização',
-          content: {
-            title: 'Instituição',
-            duration: 'Duração',
-            time: 'horas',
-            description: 'Descrição',
-          },
+          content: { title: 'Instituição', duration: 'Duração', time: 'horas', description: 'Descrição' },
         },
         targetTexts: { title: 'Objetivo' },
       },
@@ -107,22 +99,27 @@ export class RegisterTemplate {
   }
 
   #formatPhoneNumber(phone) {
-    if (phone.length === 13) {
-      return phone.replace(/^(\d{2})(\d{2})(\d{5})(\d{4})$/, '+$1 ($2) $3-$4');
-    }
-    if (phone.length === 12) {
-      return phone.replace(/^(\d{2})(\d{2})(\d{4})(\d{4})$/, '+$1 ($2) $3-$4');
-    }
-    if (phone.length === 11) {
-      return phone.replace(/^(\d{2})(\d{5})(\d{4})$/, '($1) $2-$3');
-    }
-    if (phone.length === 10) {
-      return phone.replace(/^(\d{2})(\d{4})(\d{4})$/, '($1) $2-$3');
-    }
-    return phone;
+    const formats = {
+      13: /^(\d{2})(\d{2})(\d{5})(\d{4})$/,
+      12: /^(\d{2})(\d{2})(\d{4})(\d{4})$/,
+      11: /^(\d{2})(\d{5})(\d{4})$/,
+      10: /^(\d{2})(\d{4})(\d{4})$/,
+    };
+
+    const replacements = {
+      13: '+$1 ($2) $3-$4',
+      12: '+$1 ($2) $3-$4',
+      11: '($1) $2-$3',
+      10: '($1) $2-$3',
+    };
+
+    const format = formats[phone.length];
+    const replacement = replacements[phone.length];
+
+    return format && replacement ? phone.replace(format, replacement) : phone;
   }
 
-  #orderArrray(data) {
+  #orderArray(data) {
     data.sort((a, b) => {
       if (a.currently && !b.currently) return -1;
       if (!a.currently && b.currently) return 1;
@@ -135,31 +132,17 @@ export class RegisterTemplate {
     });
   }
 
-  #formatPeriod(
-    templateConfig,
-    item,
-  ) {
-    const startDate = new Date(item.startsAt).toLocaleDateString(
-      this.#languageConfig[templateConfig.language].period.format,
-      {
-        year: 'numeric',
-        month: 'long',
-      },
-    );
+  #formatPeriod(templateConfig, item) {
+    const locale = this.#languageConfig[templateConfig.language].period.format;
+    const dateOptions = { year: 'numeric', month: 'long' };
+
+    const startDate = new Date(item.startsAt).toLocaleDateString(locale, dateOptions);
 
     if (item.currently || !item.endsAt) {
-      return `${startDate} - ${this.#languageConfig[templateConfig.language].period.untilNow
-        }`;
+      return `${startDate} - ${this.#languageConfig[templateConfig.language].period.untilNow}`;
     }
 
-    const endDate = new Date(item.endsAt).toLocaleDateString(
-      this.#languageConfig[templateConfig.language].period.format,
-      {
-        year: 'numeric',
-        month: 'long',
-      },
-    );
-
+    const endDate = new Date(item.endsAt).toLocaleDateString(locale, dateOptions);
     return `${startDate} - ${endDate}`;
   }
 
@@ -167,15 +150,10 @@ export class RegisterTemplate {
     return keywords?.join(',');
   }
 
-  #prepareItems(
-    templateConfig,
-    data,
-  ) {
-    if (!data?.length) {
-      return [];
-    }
+  #prepareItems(templateConfig, data) {
+    if (!data?.length) return [];
 
-    this.#orderArrray(data);
+    this.#orderArray(data);
 
     return data.map(item => ({
       ...item,
@@ -185,193 +163,83 @@ export class RegisterTemplate {
   }
 
   async #registerIcons({ templateConfig }) {
-    await this.#parseContent.parsePartial({
-      name: 'diplomaIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'diploma-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'envelopeIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'envelope-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'githubIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'github-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'institutionIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'institution-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'linkedinIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'linkedin-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'locationIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'location-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'pinIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'pin-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'siteIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'site-icon.hbs'),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'whatsappIcon',
-      file: this.#resolve(this.#basePath, 'resume', 'icons', 'whatsapp-icon.hbs'),
-      variables: templateConfig,
-    });
+    const icons = [
+      'diploma-icon', 'envelope-icon', 'github-icon', 'institution-icon',
+      'linkedin-icon', 'location-icon', 'pin-icon', 'site-icon', 'whatsapp-icon'
+    ];
+
+    for (const icon of icons) {
+      await this.#parseContent.parsePartial({
+        name: icon.replace('-icon', 'Icon'),
+        file: this.#resolve(this.#basePath, 'resume', 'icons', `${icon}.hbs`),
+        variables: templateConfig,
+      });
+    }
   }
 
   async #registerCss({ templateConfig }) {
-    await this.#parseContent.parsePartial({
-      name: 'rootStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'root.hbs',
-      ),
-      variables: templateConfig,
-    });
-    await this.#parseContent.parsePartial({
-      name: 'baseStyle',
-      file: this.#resolve(this.#basePath, 'resume', 'styles', 'styles.css'),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'resumeStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'resume.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'headerStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'header.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'aboutStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'about.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'skillsStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'skills.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'targetStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'target.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'graduationStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'graduation.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'specializationStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'specialization.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'projectsStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'projects.css',
-      ),
-    });
-    await this.#parseContent.parsePartial({
-      name: 'experienceStyle',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'styles',
-        templateConfig.name,
-        'experience.css',
-      ),
-    });
+    const styles = [
+      { name: 'rootStyle', path: [templateConfig.name, 'root.hbs'] },
+      { name: 'baseStyle', path: ['styles.css'] },
+      { name: 'resumeStyle', path: [templateConfig.name, 'resume.css'] },
+      { name: 'headerStyle', path: [templateConfig.name, 'header.css'] },
+      { name: 'aboutStyle', path: [templateConfig.name, 'about.css'] },
+      { name: 'skillsStyle', path: [templateConfig.name, 'skills.css'] },
+      { name: 'targetStyle', path: [templateConfig.name, 'target.css'] },
+      { name: 'graduationStyle', path: [templateConfig.name, 'graduation.css'] },
+      { name: 'specializationStyle', path: [templateConfig.name, 'specialization.css'] },
+      { name: 'projectsStyle', path: [templateConfig.name, 'projects.css'] },
+      { name: 'experienceStyle', path: [templateConfig.name, 'experience.css'] },
+    ];
+
+    for (const style of styles) {
+      await this.#parseContent.parsePartial({
+        name: style.name,
+        file: this.#resolve(this.#basePath, 'resume', 'styles', ...style.path),
+      });
+    }
   }
 
-  async #registerHbs({
-    templateConfig,
-    aboutSection,
-    experienceSection,
-    graduationSection,
-    headerSection,
-    projectSection,
-    skillSection,
-    specializationSection,
-    targetSection,
-  }) {
+  async #registerHbs(variables) {
+    const { templateConfig, aboutSection, experienceSection, graduationSection,
+      headerSection, projectSection, skillSection, specializationSection, targetSection } = variables;
+
+    await this.#registerContactSection(headerSection);
+    await this.#registerHeaderSection(headerSection);
+    await this.#registerAboutSection(templateConfig, aboutSection);
+    await this.#registerTargetSection(templateConfig, targetSection);
+    await this.#registerExperienceSection(templateConfig, experienceSection);
+    await this.#registerGraduationSection(templateConfig, graduationSection);
+    await this.#registerSpecializationSection(templateConfig, specializationSection);
+    await this.#registerSkillSection(templateConfig, skillSection);
+    await this.#registerProjectSection(templateConfig, projectSection);
+  }
+
+  async #registerContactSection(headerSection) {
     await this.#parseContent.parsePartial({
       name: 'contactSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'contact.hbs'),
       variables: {
         ...headerSection.contact,
-        ...(headerSection?.contact?.whatsapp?.value &&
-        {
+        ...(headerSection?.contact?.whatsapp?.value && {
           whatsapp: {
-            value: this.#formatPhoneNumber(
-              headerSection.contact.whatsapp.value,
-            ),
+            value: this.#formatPhoneNumber(headerSection.contact.whatsapp.value),
             ref: headerSection.contact.whatsapp.value,
           }
         }),
       },
     });
+  }
+
+  async #registerHeaderSection(headerSection) {
     await this.#parseContent.parsePartial({
       name: 'headerSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'header.hbs'),
       variables: headerSection,
     });
+  }
+
+  async #registerAboutSection(templateConfig, aboutSection) {
     await this.#parseContent.parsePartial({
       name: 'aboutSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'about.hbs'),
@@ -381,6 +249,9 @@ export class RegisterTemplate {
         aboutTexts: this.#languageConfig[templateConfig.language].aboutTexts,
       },
     });
+  }
+
+  async #registerTargetSection(templateConfig, targetSection) {
     await this.#parseContent.parsePartial({
       name: 'targetSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'target.hbs'),
@@ -390,90 +261,69 @@ export class RegisterTemplate {
         targetTexts: this.#languageConfig[templateConfig.language].targetTexts,
       },
     });
+  }
+
+  async #registerExperienceSection(templateConfig, experienceSection) {
     await this.#parseContent.parsePartial({
       name: 'experienceSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'experience.hbs'),
       variables: {
-        experiences: this.#prepareItems(
-          templateConfig,
-          experienceSection.experiences,
-        ),
-        experienceTexts:
-          this.#languageConfig[templateConfig.language].experienceTexts,
+        experiences: this.#prepareItems(templateConfig, experienceSection.experiences),
+        experienceTexts: this.#languageConfig[templateConfig.language].experienceTexts,
       },
     });
+  }
+
+  async #registerGraduationSection(templateConfig, graduationSection) {
     await this.#parseContent.parsePartial({
       name: 'graduationSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'graduation.hbs'),
       variables: {
-        graduations: this.#prepareItems(
-          templateConfig,
-          graduationSection.graduations,
-        ),
-        graduationTexts:
-          this.#languageConfig[templateConfig.language].graduationTexts,
+        graduations: this.#prepareItems(templateConfig, graduationSection.graduations),
+        graduationTexts: this.#languageConfig[templateConfig.language].graduationTexts,
       },
     });
+  }
+
+  async #registerSpecializationSection(templateConfig, specializationSection) {
     await this.#parseContent.parsePartial({
       name: 'specializationSection',
-      file: this.#resolve(
-        this.#basePath,
-        'resume',
-        'templates',
-        'specialization.hbs',
-      ),
+      file: this.#resolve(this.#basePath, 'resume', 'templates', 'specialization.hbs'),
       variables: specializationSection.specializations && {
-        specializations: specializationSection.specializations.map(
-          specialization => ({
-            ...specialization,
-            keywords: this.#joinKeywords(specialization.keywords),
-          }),
-        ),
-        specializationTexts:
-          this.#languageConfig[templateConfig.language].specializationTexts,
+        specializations: specializationSection.specializations.map(spec => ({
+          ...spec,
+          keywords: this.#joinKeywords(spec.keywords),
+        })),
+        specializationTexts: this.#languageConfig[templateConfig.language].specializationTexts,
       },
     });
+  }
+
+  async #registerSkillSection(templateConfig, skillSection) {
     await this.#parseContent.parsePartial({
       name: 'skillSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'skills.hbs'),
       variables: skillSection.skills && {
         skills: skillSection.skills.map(skill => ({
           ...skill,
-          level:
-            this.#languageConfig[templateConfig.language].skillTexts.options[
-            skill.level
-            ],
+          level: this.#languageConfig[templateConfig.language].skillTexts.options[skill.level],
         })),
         keywords: this.#joinKeywords(skillSection.keywords),
         skillTexts: this.#languageConfig[templateConfig.language].skillTexts,
       },
     });
+  }
+
+  async #registerProjectSection(templateConfig, projectSection) {
     await this.#parseContent.parsePartial({
       name: 'projectSection',
       file: this.#resolve(this.#basePath, 'resume', 'templates', 'projects.hbs'),
       variables: projectSection.projects && {
-        projects: projectSection.projects.map(project => {
-          return {
-            ...project,
-            keywords: this.#joinKeywords(project.keywords),
-          };
-        }),
-        projectTexts:
-          this.#languageConfig[templateConfig.language].projectTexts,
-      },
-    });
-  }
-
-  async getContent(variables) {
-    await this.#registerIcons(variables);
-    await this.#registerCss(variables);
-    await this.#registerHbs(variables);
-
-    return this.#parseContent.parseTemplate({
-      file: this.#resolve(this.#basePath, 'resume', 'templates', 'index.hbs'),
-      variables: {
-        ...variables,
-        htmlTexts: this.#languageConfig[variables.templateConfig.language].html,
+        projects: projectSection.projects.map(project => ({
+          ...project,
+          keywords: this.#joinKeywords(project.keywords),
+        })),
+        projectTexts: this.#languageConfig[templateConfig.language].projectTexts,
       },
     });
   }

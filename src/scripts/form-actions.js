@@ -1,23 +1,22 @@
 import { DataCollector } from './data-collector.js';
 import { RegisterTemplate } from './registerTemplate.js';
 import { PersistenceManager } from './persistence.js';
-import { DataRestorer } from './data-restorer.js';
 
 export class FormActions {
-  #registerTemplate
+  #registerTemplate;
+  #sectionManagers;
 
-  constructor() {
+  constructor(sectionManagers = {}) {
     this.#registerTemplate = new RegisterTemplate();
+    this.#sectionManagers = sectionManagers;
   }
 
   async #updatePreview() {
     const variables = DataCollector.collect();
-
     const previewFrame = document.querySelector('#previewFrame');
 
     if (previewFrame) {
       const htmlContent = await this.#registerTemplate.getContent(variables);
-
       const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       previewFrame.src = url;
@@ -31,20 +30,63 @@ export class FormActions {
 
   async #loadFormData() {
     const savedData = PersistenceManager.load();
-    if (savedData) {
-      DataRestorer.restore(savedData);
-      // Update preview after restoring data
-      await this.#updatePreview();
+    if (!savedData) return;
+
+    this.#restoreTemplateConfig(savedData.templateConfig);
+    this.#sectionManagers.header?.init(savedData.headerSection);
+    this.#sectionManagers.description?.init(savedData.aboutSection?.descriptions);
+    this.#sectionManagers.keywordManager?.init('aboutKeywords', savedData.aboutSection?.keywords);
+    this.#sectionManagers.skills?.init(savedData.skillSection?.skills);
+    this.#sectionManagers.keywordManager?.init('skillsKeywords', savedData.skillSection?.keywords);
+    this.#restoreTargetSection(savedData.targetSection);
+    this.#sectionManagers.experience?.init(savedData.experienceSection?.experiences);
+    this.#sectionManagers.graduation?.init(savedData.graduationSection?.graduations);
+    this.#sectionManagers.specialization?.init(savedData.specializationSection?.specializations);
+    this.#sectionManagers.project?.init(savedData.projectSection?.projects);
+
+    await this.#updatePreview();
+  }
+
+  #restoreTemplateConfig(config) {
+    if (!config) return;
+
+    const fieldMap = {
+      '#templateModel': config.name,
+      '#templateLanguage': config.language,
+      '#templateFontColor': config.fontColor,
+      '#templateFontSize': config.fontSize
+    };
+
+    Object.entries(fieldMap).forEach(([selector, value]) => {
+      if (value !== undefined) {
+        const element = document.querySelector(selector);
+        if (element) element.value = value;
+      }
+    });
+
+    const monochromeCheckbox = document.querySelector('#templateMonochrome');
+    if (monochromeCheckbox && config.monochrome !== undefined) {
+      monochromeCheckbox.checked = config.monochrome;
     }
   }
 
-  async #setupAutoPreview() {
+  #restoreTargetSection(target) {
+    if (!target) return;
+
+    const positionInput = document.querySelector('#targetPosition');
+    if (positionInput && target.position) {
+      positionInput.value = target.position;
+    }
+
+    this.#sectionManagers.keywordManager?.init('targetKeywords', target.keywords);
+  }
+
+  #setupAutoPreview() {
     let debounceTimer;
     const updatePreviewDebounced = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(async () => {
         await this.#updatePreview();
-        // Save form data automatically when preview updates
         this.#saveFormData();
       }, 500);
     };
@@ -53,14 +95,14 @@ export class FormActions {
     main.addEventListener('input', updatePreviewDebounced);
     main.addEventListener('change', updatePreviewDebounced);
 
-    await this.#updatePreview();
+    this.#updatePreview();
   }
 
-  async #setupDownloadPDFButton() {
-    const previewBtn = document.querySelector('#downloadPdf');
-    if (!previewBtn) return;
+  #setupDownloadPDFButton() {
+    const downloadBtn = document.querySelector('#downloadPdf');
+    if (!downloadBtn) return;
 
-    previewBtn.addEventListener('click', async () => {
+    downloadBtn.addEventListener('click', async () => {
       const variables = DataCollector.collect();
       const htmlContent = await this.#registerTemplate.getContent(variables);
 
@@ -77,9 +119,7 @@ export class FormActions {
   }
 
   async setupAllActions() {
-    // Load saved data first, before setting up other actions
     await this.#loadFormData();
-
     this.#setupAutoPreview();
     this.#setupDownloadPDFButton();
   }

@@ -11,20 +11,42 @@ import { FormActions } from './form-actions.js';
 
 class Main {
   constructor() {
-    new Navigation();
-    new Header();
-    new Skills();
-    new Experience();
-    new Graduation();
-    new Project();
-    new Specialization();
-    new Description()
+    this.#initializeComponents();
+    this.#setupKeywordManagers();
+    this.#setupFormActions();
+  }
 
+  #initializeComponents() {
+    new Navigation();
+
+    this.header = new Header();
+    this.skills = new Skills();
+    this.experience = new Experience();
+    this.graduation = new Graduation();
+    this.project = new Project();
+    this.specialization = new Specialization();
+    this.description = new Description();
+  }
+
+  #setupKeywordManagers() {
     KeywordManager.setupKeywordContainer('skillsKeywords', 'skillsKeywordsAdd');
     KeywordManager.setupKeywordContainer('aboutKeywords', 'aboutKeywordsAdd');
     KeywordManager.setupKeywordContainer('targetKeywords', 'targetKeywordsAdd');
+  }
 
-    new FormActions().setupAllActions();
+  #setupFormActions() {
+    const sectionManagers = {
+      header: this.header,
+      skills: this.skills,
+      experience: this.experience,
+      graduation: this.graduation,
+      project: this.project,
+      specialization: this.specialization,
+      description: this.description,
+      keywordManager: KeywordManager
+    };
+
+    new FormActions(sectionManagers).setupAllActions();
   }
 }
 
