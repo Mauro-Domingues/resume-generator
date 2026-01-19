@@ -23,6 +23,10 @@ export class Header {
       this.#restoreContactFields(headerData.contact);
       headerData.contact.personal?.forEach(link => this.#addPersonalLink(link));
     }
+
+    if (headerData.contact?.whatsapp?.value) {
+      this.#whatsappInput.value = this.#applyWhatsappMask(headerData.contact.whatsapp.value);
+    }
   }
 
   #restoreContactFields(contact) {
@@ -46,10 +50,29 @@ export class Header {
 
   #applyWhatsappMask(value) {
     const numbers = value.replaceAll(/\D/g, '');
-    if (numbers.length === 0) return '';
-    if (numbers.length <= 2) return `(${numbers}`;
-    if (numbers.length <= 7) return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
-    return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+
+    const formats = {
+      13: /^(\d{2})(\d{2})(\d{5})(\d{4})$/,
+      12: /^(\d{2})(\d{2})(\d{4})(\d{4})$/,
+      11: /^(\d{2})(\d{5})(\d{4})$/,
+      10: /^(\d{2})(\d{4})(\d{4})$/,
+      9: /^(\d{5})(\d{4})$/,
+      8: /^(\d{4})(\d{4})$/,
+    };
+
+    const replacements = {
+      13: '+$1 ($2) $3-$4',
+      12: '+$1 ($2) $3-$4',
+      11: '($1) $2-$3',
+      10: '($1) $2-$3',
+      9: '$1-$2',
+      8: '$1-$2',
+    };
+
+    const format = formats[numbers.length];
+    const replacement = replacements[numbers.length];
+
+    return format && replacement ? numbers.replace(format, replacement) : numbers;
   }
 
   #setupWhatsappMask() {
