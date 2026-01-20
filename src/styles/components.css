@@ -92,7 +92,7 @@
 
 h3,
 .form-group label {
-    display: block;
+    display: flex;
     margin-bottom: var(--space-sm);
     font-weight: 700;
     font-size: 12px;

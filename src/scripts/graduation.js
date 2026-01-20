@@ -27,7 +27,12 @@ export class Graduation {
       <input id="graduationList-institution-${index}" class="institution" placeholder="Instituição" aria-label="Nome da instituição" />
       <input type="date" id="graduationList-startsAt-${index}" class="startsAt" placeholder="Início" aria-label="Data de início" />
       <input type="date" id="graduationList-endsAt-${index}" class="endsAt" placeholder="Fim" aria-label="Data de término" />
-      <label><input type="checkbox" id="graduationList-currently-${index}" class="currently" /> Cursa Atualmente?</label>
+      <div class="form-group">
+        <label for="graduationList-currently-${index}">
+          <input type="checkbox" id="graduationList-currently-${index}" />
+          Cursa Atualmente?
+        </label>
+      </div>
       <textarea id="graduationList-description-${index}" class="description" placeholder="Descrição" aria-label="Descrição do curso"></textarea>
     `;
 

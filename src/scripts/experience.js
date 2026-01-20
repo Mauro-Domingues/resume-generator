@@ -27,7 +27,12 @@ export class Experience {
       <input id="experienceList-company-${index}" class="company" placeholder="Empresa" aria-label="Empresa" />
       <input type="date" id="experienceList-startsAt-${index}" class="startsAt" aria-label="Data de início" />
       <input type="date" id="experienceList-endsAt-${index}" class="endsAt" aria-label="Data de término" />
-      <label><input type="checkbox" id="experienceList-currently-${index}" class="currently" /> Trabalha Atualmente?</label>
+      <div class="form-group">
+        <label for="experienceList-currently-${index}">
+          <input type="checkbox" id="experienceList-currently-${index}" />
+          Trabalha Atualmente?
+        </label>
+      </div>
       <textarea id="experienceList-description-${index}" class="description" placeholder="Descrição" aria-label="Descrição das atividades"></textarea>
     `;
 
