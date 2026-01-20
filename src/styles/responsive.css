@@ -1,7 +1,3 @@
-/* ====================================
-   RESPONSIVE ADJUSTMENTS
-   ==================================== */
-
 @media (max-width:1438px) {
     #main-container {
         flex-direction: column;

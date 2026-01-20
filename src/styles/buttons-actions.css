@@ -1,0 +1,72 @@
+.remove::before,
+.keyword-remove::before {
+    content: '\00D7';
+}
+
+:is(.keywords-add, .btn-add-keyword, .add-item)::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            transparent 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    opacity: 0;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+:is(.keywords-add, .btn-add-keyword, .add-item)::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    border-radius: var(--radius-md);
+}
+
+:is(.keywords-add, .btn-add-keyword, .add-item):hover:not(.loading) {
+    box-shadow: 0 1px 32px rgba(99, 102, 241, 0.35);
+}
+
+:is(.keywords-add, .btn-add-keyword, .add-item):hover:not(.loading)::before,
+:is(.keywords-add, .btn-add-keyword, .add-item):hover:not(.loading)::after {
+    opacity: 1;
+}
+
+:is(.keywords-add, .btn-add-keyword, .add-item):active {
+    transform: translateY(-1px);
+}
+
+:is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add)::before {
+    content: '+ ';
+    margin-right: 6px;
+}
+
+:is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add)::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+:is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.35),
+        0 0 20px rgba(99, 102, 241, 0.15);
+}
+
+:is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add):hover::after {
+    opacity: 1;
+}
+
+:is(button, input, select, textarea):focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}

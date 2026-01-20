@@ -1,65 +1,3 @@
-/* ====================================
-   DESIGN SYSTEM & VARIABLES
-   ==================================== */
-
-:root {
-    /* Primary Colors - Gradient Purple */
-    --color-primary: #6366F1;
-    --color-primary-dark: #4F46E5;
-    --color-primary-darker: #3B38B5;
-    --color-primary-light: #E0E7FF;
-    --color-primary-lighter: #F0F3FF;
-
-    /* Accent Colors */
-    --color-secondary: #8B5CF6;
-    --color-accent: #EC4899;
-    --color-success: #10B981;
-    --color-success-light: #D1FAE5;
-    --color-warning: #F59E0B;
-    --color-error: #EF4444;
-
-    /* Neutral Colors */
-    --color-bg-primary: #FFFFFF;
-    --color-bg-secondary: #F9FAFB;
-    --color-bg-tertiary: #F3F4F6;
-    --color-bg-hover: #FAFBFF;
-    --color-border: #E5E7EB;
-    --color-border-light: #F0F1F3;
-    --color-text-primary: #111827;
-    --color-text-secondary: #6B7280;
-    --color-text-tertiary: #9CA3AF;
-    /* Shadows */
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
-    --shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
-    --shadow-xl: 0 20px 40px 0 rgba(0, 0, 0, 0.16);
-    --shadow-glow: 0 0 20px 0 rgba(99, 102, 241, 0.3);
-
-    /* Spacing */
-    --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 12px;
-    --space-lg: 16px;
-    --space-xl: 24px;
-    --space-2xl: 32px;
-
-    /* Border Radius */
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
-    --radius-xl: 18px;
-
-    /* Transitions */
-    --transition-fast: 0.15s ease;
-    --transition-base: 0.3s ease;
-    --transition-slow: 0.5s ease;
-}
-
-/* ====================================
-   RESET & BASE STYLES
-   ==================================== */
-
 * {
     margin: 0;
     padding: 0;
@@ -80,7 +18,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
@@ -96,14 +33,6 @@ body {
     transition: background var(--transition-fast);
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: var(--color-text-tertiary);
-}
-
-/* ====================================
-   HEADER
-   ==================================== */
-
 header {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: #FFFFFF;
@@ -111,32 +40,6 @@ header {
     box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25);
     position: relative;
     overflow: hidden;
-}
-
-header::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    right: -8%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(40px);
-}
-
-header::after {
-    content: '';
-    position: absolute;
-    bottom: -20%;
-    left: -5%;
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(40px);
 }
 
 header h1 {
@@ -153,10 +56,6 @@ header h1 {
     background-clip: text;
 }
 
-/* ====================================
-   MAIN LAYOUT
-   ==================================== */
-
 #main-container {
     display: flex;
 }
@@ -169,12 +68,10 @@ main {
     overflow: hidden;
 }
 
-/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* Selection styling */
 ::selection {
     background: var(--color-primary);
     color: white;
@@ -185,11 +82,6 @@ html {
     color: white;
 }
 
-/* ====================================
-   ACCESSIBILITY UTILITIES
-   ==================================== */
-
-/* Skip Link for Keyboard Navigation */
 .skip-link {
     position: absolute;
     top: -100px;
@@ -205,13 +97,6 @@ html {
     box-shadow: var(--shadow-lg);
 }
 
-.skip-link:focus {
-    top: 0;
-    outline: 3px solid var(--color-accent);
-    outline-offset: 2px;
-}
-
-/* Screen Reader Only Content */
 .visually-hidden {
     position: absolute;
     width: 1px;
@@ -224,7 +109,6 @@ html {
     border-width: 0;
 }
 
-/* Fieldset Styling */
 fieldset {
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
