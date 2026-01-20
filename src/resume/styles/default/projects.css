@@ -34,6 +34,8 @@
 
 #projects>.project-list>li>article>figure>img {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
 #projects>.project-list>li>article>.content {
