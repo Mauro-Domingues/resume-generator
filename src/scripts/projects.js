@@ -83,7 +83,7 @@ export class Project {
     });
 
     if (data) {
-      this.#populateItem(item, data);
+      this.#populateItem(item, index, data);
     }
 
     this.#projectList?.appendChild(item);
@@ -114,7 +114,7 @@ export class Project {
     container.appendChild(kwDiv);
   }
 
-  #populateItem(item, data) {
+  #populateItem(item, index, data) {
     const setInputValue = (selector, value) => {
       if (value !== undefined) {
         const el = item.querySelector(selector);
@@ -135,7 +135,6 @@ export class Project {
     }
 
     const keywordsSub = item.querySelector('.keywords-sub');
-    const projectIndex = Array.from(this.#projectList.children).indexOf(item);
-    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, projectIndex, kw));
+    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, index, kw));
   }
 }

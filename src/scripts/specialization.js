@@ -59,7 +59,7 @@ export class Specialization {
     item.appendChild(removeBtn);
 
     if (data) {
-      this.#populateItem(item, data);
+      this.#populateItem(item, index, data);
     }
 
     this.#specializationList?.appendChild(item);
@@ -90,7 +90,7 @@ export class Specialization {
     container.appendChild(kwDiv);
   }
 
-  #populateItem(item, data) {
+  #populateItem(item, index, data) {
     const setInputValue = (selector, value) => {
       if (value !== undefined) {
         const el = item.querySelector(selector);
@@ -104,7 +104,6 @@ export class Specialization {
     setInputValue('.description', data.description);
 
     const keywordsSub = item.querySelector('.keywords-sub');
-    const specializationIndex = Array.from(this.#specializationList.children).indexOf(item);
-    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, specializationIndex, kw));
+    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, index, kw));
   }
 }

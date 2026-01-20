@@ -75,7 +75,7 @@ export class Experience {
     });
 
     if (data) {
-      this.#populateItem(item, data);
+      this.#populateItem(item, index, data);
     }
 
     this.#experienceList?.appendChild(item);
@@ -106,7 +106,7 @@ export class Experience {
     container.appendChild(kwDiv);
   }
 
-  #populateItem(item, data) {
+  #populateItem(item, index, data) {
     const setInputValue = (selector, value) => {
       if (value !== undefined) {
         const el = item.querySelector(selector);
@@ -128,7 +128,6 @@ export class Experience {
     setInputValue('.description', data.description);
 
     const keywordsSub = item.querySelector('.keywords-sub');
-    const experienceIndex = Array.from(this.#experienceList.children).indexOf(item);
-    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, experienceIndex, kw));
+    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, index, kw));
   }
 }

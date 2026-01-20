@@ -73,7 +73,7 @@ export class Graduation {
     item.appendChild(removeBtn);
 
     if (data) {
-      this.#populateItem(item, data);
+      this.#populateItem(item, index, data);
     }
 
     this.#graduationList?.appendChild(item);
@@ -104,7 +104,7 @@ export class Graduation {
     container.appendChild(kwDiv);
   }
 
-  #populateItem(item, data) {
+  #populateItem(item, index, data) {
     const setInputValue = (selector, value) => {
       if (value !== undefined) {
         const el = item.querySelector(selector);
@@ -126,7 +126,6 @@ export class Graduation {
     setInputValue('.description', data.description);
 
     const keywordsSub = item.querySelector('.keywords-sub');
-    const graduationIndex = Array.from(this.#graduationList.children).indexOf(item);
-    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, graduationIndex, kw));
+    data.keywords?.forEach(kw => this.#addKeyword(keywordsSub, index, kw));
   }
 }
