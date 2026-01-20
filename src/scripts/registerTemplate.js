@@ -183,7 +183,7 @@ export class RegisterTemplate {
 
   async #registerCss({ templateConfig }) {
     const styles = [
-      { name: 'rootStyle', path: [templateConfig.name, 'root.hbs'] },
+      { name: 'rootStyle', path: [templateConfig.name, 'root.hbs'], variables: templateConfig },
       { name: 'baseStyle', path: ['styles.css'] },
       { name: 'resumeStyle', path: [templateConfig.name, 'resume.css'] },
       { name: 'headerStyle', path: [templateConfig.name, 'header.css'] },
@@ -200,6 +200,7 @@ export class RegisterTemplate {
       await this.#parseContent.parsePartial({
         name: style.name,
         file: this.#resolve(this.#basePath, 'resume', 'styles', ...style.path),
+        variables: style.variables
       });
     }
   }

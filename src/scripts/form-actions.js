@@ -104,17 +104,25 @@ export class FormActions {
 
     downloadBtn.addEventListener('click', async () => {
       const variables = DataCollector.collect();
-      const htmlContent = await this.#registerTemplate.getContent(variables);
+      let htmlContent = await this.#registerTemplate.getContent(variables);
 
-      const printWindow = window.open('', '_self');
-      printWindow.document.write(htmlContent);
-      printWindow.document.close();
+      const autoPrintScript = `
+      <script>
+        globalThis.onload = () => {
+          globalThis.print();
+          globalThis.onafterprint = () => {
+            globalThis.history.back();
+          };
+        };
+      </script>
+    `;
 
-      printWindow.onafterprint = () => {
-        printWindow.close();
-      };
+      htmlContent = htmlContent.replace('</body>', `${autoPrintScript}</body>`);
 
-      printWindow.print();
+      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+
+      globalThis.location.href = url;
     });
   }
 

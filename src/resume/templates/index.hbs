@@ -10,14 +10,14 @@
     {{> rootStyle}}
     {{> baseStyle}}
     {{> resumeStyle}}
-    {{> headerStyle}}
-    {{> aboutStyle}}
-    {{> skillsStyle}}
-    {{> targetStyle}}
-    {{> graduationStyle}}
-    {{> specializationStyle}}
-    {{> projectsStyle}}
-    {{> experienceStyle}}
+    {{#if headerSection.header.name}}{{> headerStyle}}{{/if}}
+    {{#if aboutSection.descriptions}}{{> aboutStyle}}{{/if}}
+    {{#if skillSection.skills}}{{> skillsStyle}}{{/if}}
+    {{#if targetSection.position}}{{> targetStyle}}{{/if}}
+    {{#if graduationSection.graduations}}{{> graduationStyle}}{{/if}}
+    {{#if specializationSection.specializations}}{{> specializationStyle}}{{/if}}
+    {{#if projectSection.projects}}{{> projectsStyle}}{{/if}}
+    {{#if experienceSection.experiences}}{{> experienceStyle}}{{/if}}
   </style>
 </head>
 
