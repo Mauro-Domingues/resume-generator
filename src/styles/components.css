@@ -170,7 +170,6 @@
     border-left: 4px solid var(--color-primary);
     transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
     position: relative;
-    /* overflow: hidden; */
     backdrop-filter: blur(2px);
 }
 
@@ -245,7 +244,8 @@
     border-radius: var(--radius-xl);
     overflow: hidden;
     height: 297mm;
-    width: 214.5mm;
+    width: 209.7mm;
+    max-width: calc(100vw - 80px);
     box-shadow: var(--shadow-lg);
     margin-bottom: 70px;
     border: 1px solid var(--color-border);
@@ -271,6 +271,7 @@
 
 #previewFrame {
     flex: 1;
+    padding: var(--space-sm);
     border: none;
     width: 100%;
     background: var(--color-bg-primary);
