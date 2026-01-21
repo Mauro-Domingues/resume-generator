@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-size: calc(10 * var(--base-font-size));
+  font-size: var(--font-size);
   color: var(--font-color)
 }
 
@@ -12,7 +12,7 @@ html {
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: var(--font-family);
   page-break-after: always;
   position: relative;
   height: 297mm;

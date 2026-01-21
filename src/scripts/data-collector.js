@@ -19,7 +19,8 @@ export class DataCollector {
     return {
       name: document.querySelector('#templateModel')?.value || 'default',
       language: document.querySelector('#templateLanguage')?.value || 'ptBr',
-      monochrome: document.querySelector('#templateMonochrome')?.checked || undefined,
+      monochrome: document.querySelector('#templateMonochrome')?.checked || false,
+      fontFamily: document.querySelector('#templateFontFamily')?.value || 'Open Sans, sans-serif',
       fontColor: document.querySelector('#templateFontColor')?.value || '#706f6f',
       fontSize: document.querySelector('#templateFontSize')?.value || 16,
     };
