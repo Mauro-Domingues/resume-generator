@@ -7,12 +7,12 @@ header::before {
     position: absolute;
     top: -40%;
     right: -8%;
-    width: 350px;
-    height: 350px;
+    width: 21.875rem;
+    height: 21.875rem;
     background: radial-gradient(circle, color-mix(in srgb, var(--color-white) 15%, transparent) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(40px);
+    filter: blur(2.5rem);
 }
 
 header::after {
@@ -20,16 +20,16 @@ header::after {
     position: absolute;
     bottom: -20%;
     left: -5%;
-    width: 250px;
-    height: 250px;
+    width: 15.625rem;
+    height: 15.625rem;
     background: radial-gradient(circle, color-mix(in srgb, var(--color-white) 10%, transparent) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(40px);
+    filter: blur(2.5rem);
 }
 
 .skip-link:focus {
     top: 0;
-    outline: 3px solid var(--color-accent);
-    outline-offset: 2px;
+    outline: 0.1875rem solid var(--color-accent);
+    outline-offset: 0.125rem;
 }

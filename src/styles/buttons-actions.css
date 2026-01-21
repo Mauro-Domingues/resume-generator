@@ -18,7 +18,7 @@
 :is(.keywords-add, .btn-add-keyword, .add-item)::after {
     content: '';
     position: absolute;
-    inset: -4px;
+    inset: -0.25rem;
     background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 30%, transparent) 0%, transparent 70%);
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -27,7 +27,7 @@
 }
 
 :is(.keywords-add, .btn-add-keyword, .add-item):hover:not(.loading) {
-    box-shadow: 0 1px 32px color-mix(in srgb, var(--color-primary) 35%, transparent);
+    box-shadow: 0 0.0625rem 2rem color-mix(in srgb, var(--color-primary) 35%, transparent);
 }
 
 :is(.keywords-add, .btn-add-keyword, .add-item):hover:not(.loading)::before,
@@ -36,12 +36,12 @@
 }
 
 :is(.keywords-add, .btn-add-keyword, .add-item):active {
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 :is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add)::before {
     content: '+ ';
-    margin-right: 6px;
+    margin-right: 0.375rem;
 }
 
 :is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add)::after {
@@ -57,9 +57,9 @@
 }
 
 :is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add):hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 35%, transparent),
-        0 0 20px color-mix(in srgb, var(--color-primary) 15%, transparent);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.75rem 2rem color-mix(in srgb, var(--color-primary) 35%, transparent),
+        0 0 1.25rem color-mix(in srgb, var(--color-primary) 15%, transparent);
 }
 
 :is(#skills.add, #experience.add, #graduation.add, #projects.add, #specialization.add):hover::after {
@@ -67,6 +67,6 @@
 }
 
 :is(button, input, select, textarea):focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
+    outline: 0.125rem solid var(--color-primary);
+    outline-offset: 0.125rem;
 }

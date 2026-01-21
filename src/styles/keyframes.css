@@ -1,7 +1,7 @@
 @keyframes panelSlideIn {
   from {
     opacity: 0;
-    transform: translateX(-20px) scale(0.98);
+    transform: translateX(-1.25rem) scale(0.98);
   }
 
   to {

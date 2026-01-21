@@ -4,7 +4,7 @@
     top: 0;
     right: 0;
     width: 100%;
-    height: 2px;
+    height: 0.125rem;
     background: linear-gradient(90deg, transparent 0%, var(--color-primary) 50%, transparent 100%);
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -19,10 +19,10 @@
     position: absolute;
     left: calc(-1 * var(--space-md));
     top: 0;
-    width: 3px;
+    width: 0.1875rem;
     height: var(--space-xl);
     background: linear-gradient(180deg, var(--color-primary) 0%, transparent 100%);
-    border-radius: 2px;
+    border-radius: 0.125rem;
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -41,21 +41,21 @@
     background: var(--color-bg-hover);
     box-shadow: 0 0 0 var(--space-xs) color-mix(in srgb, var(--color-primary) 15%, transparent),
         0 0 var(--space-md) color-mix(in srgb, var(--color-primary) 20%, transparent),
-        inset 0 1px 3px color-mix(in srgb, #000000 2%, transparent);
-    transform: translateY(-1px);
+        inset 0 0.0625rem 0.1875rem color-mix(in srgb, #000000 2%, transparent);
+    transform: translateY(-0.0625rem);
 }
 
 .item::before {
     content: '';
     position: absolute;
     top: 0;
-    right: -40px;
-    width: 100px;
-    height: 100px;
+    right: -2.5rem;
+    width: 6.25rem;
+    height: 6.25rem;
     background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
-    filter: blur(30px);
+    filter: blur(1.875rem);
     opacity: 0;
     transition: opacity 0.4s ease;
 }
@@ -63,9 +63,9 @@
 .item:hover {
     border-color: var(--color-primary);
     border-left-color: var(--color-accent);
-    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 15%, transparent),
-        0 0 1px color-mix(in srgb, var(--color-primary) 50%, transparent);
-    transform: translateY(-2px);
+    box-shadow: 0 0.75rem 2rem color-mix(in srgb, var(--color-primary) 15%, transparent),
+        0 0 0.0625rem color-mix(in srgb, var(--color-primary) 50%, transparent);
+    transform: translateY(-0.125rem);
 }
 
 .item:hover::before {
@@ -74,10 +74,10 @@
 
 :is(.item input, .item select, .item textarea):focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent),
-        0 0 8px color-mix(in srgb, var(--color-primary) 15%, transparent);
+    box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--color-primary) 10%, transparent),
+        0 0 0.5rem color-mix(in srgb, var(--color-primary) 15%, transparent);
     background: linear-gradient(135deg, var(--color-bg-hover) 0%, var(--color-bg-primary) 100%);
-    transform: translateY(-1px);
+    transform: translateY(-0.0625rem);
 }
 
 #output h3::before {

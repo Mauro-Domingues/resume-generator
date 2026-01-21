@@ -1,10 +1,13 @@
+html {
+    font-size: 16px;
+}
+
 :root {
     --color-primary: #6366F1;
     --color-primary-dark: #4F46E5;
     --color-primary-darker: #3B38B5;
     --color-primary-light: #E0E7FF;
     --color-primary-lighter: #F0F3FF;
-
 
     --color-secondary: #8B5CF6;
     --color-accent: #EC4899;
@@ -25,17 +28,17 @@
     --color-text-secondary: #6B7280;
     --color-text-tertiary: #9CA3AF;
 
-    --space-xs: 4px;
-    --space-sm: 8px;
-    --space-md: 12px;
-    --space-lg: 16px;
-    --space-xl: 24px;
-    --space-2xl: 32px;
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 0.75rem;
+    --space-lg: 1rem;
+    --space-xl: 1.5rem;
+    --space-2xl: 2rem;
 
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 14px;
-    --radius-xl: 18px;
+    --radius-sm: 0.375rem;
+    --radius-md: 0.625rem;
+    --radius-lg: 0.875rem;
+    --radius-xl: 1.125rem;
 
     --transition-fast: 0.15s ease;
     --transition-base: 0.3s ease;
