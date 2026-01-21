@@ -1,6 +1,11 @@
-@media (max-width:1438px) {
+@media (max-width: 1438px) {
     #main-container {
         flex-direction: column;
+    }
+
+    .panel.active {
+        width: 100%;
+        max-width: 31.25rem;
     }
 }
 
@@ -42,7 +47,5 @@
 
     .panel {
         max-height: 25rem;
-        width: 100%;
-        max-width: 31.25rem;
     }
 }
