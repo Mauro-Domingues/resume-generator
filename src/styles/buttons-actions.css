@@ -1,6 +1,25 @@
 .remove::before,
 .keyword-remove::before {
     content: '\00D7';
+    font-weight: 500;
+}
+
+.keyword-remove:hover,
+.remove:hover {
+    background: var(--color-error);
+    color: white;
+    border-color: var(--color-error);
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.remove:hover {
+    transform: scale(1.1);
+}
+
+.keyword-remove:active,
+.remove:active {
+    transform: scale(0.95);
 }
 
 :is(.keywords-add, .btn-add-keyword, .add-item)::before {

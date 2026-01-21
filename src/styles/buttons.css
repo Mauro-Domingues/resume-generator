@@ -1,34 +1,43 @@
 .keyword-remove,
 .remove {
     position: absolute;
-    border: none;
-    background: transparent;
+    background: var(--color-bg-secondary);
     right: var(--space-xs);
     cursor: pointer;
     border-radius: 50%;
-    height: 1.875rem;
-    width: 1.875rem;
-    font-size: 3.125rem;
+    height: 1.25rem;
+    width: 1.25rem;
+    font-size: 1rem;
+    line-height: 1;
     margin: 0;
-    color: var(--color-error);
+    padding: 0;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    border: 0.0625rem solid var(--color-border);
+    opacity: 0.7;
 }
 
 .remove {
-    top: -1.625rem;
-    right: -0.8125rem;
+    top: -0.625rem;
+    right: -0.625rem;
 }
 
 .banner-remove {
-    top: -0.4375rem;
-    right: var(--space-xs);
+    top: -0.625rem;
+    right: -0.625rem;
 }
 
 .keyword-tag .keyword-remove {
-    top: -0.4375rem;
+    top: -0.625rem;
+    right: -0.625rem;
 }
 
 .keyword-tag-inline .keyword-remove {
-    top: -0.5625rem;
+    top: -0.625rem;
+    right: -0.625rem;
 }
 
 .keywords-add,
