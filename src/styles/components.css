@@ -1,5 +1,6 @@
 .panel {
     width: 31.25rem;
+    overflow-x: hidden;
     border: 0.0625rem solid var(--color-border);
     padding: var(--space-2xl);
     display: none;
