@@ -3,7 +3,6 @@
 }
 
 #header>.title {
-  flex-grow: 1;
   padding-left: 0.9375rem;
   padding-top: 0.9375rem;
   font-size: 1.99375rem;
