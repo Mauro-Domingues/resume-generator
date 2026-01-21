@@ -5,12 +5,15 @@
     --color-primary-light: #E0E7FF;
     --color-primary-lighter: #F0F3FF;
 
+
     --color-secondary: #8B5CF6;
     --color-accent: #EC4899;
     --color-success: #10B981;
     --color-success-light: #D1FAE5;
     --color-warning: #F59E0B;
     --color-error: #EF4444;
+
+    --color-white: #FFFFFF;
 
     --color-bg-primary: #FFFFFF;
     --color-bg-secondary: #F9FAFB;
@@ -21,13 +24,6 @@
     --color-text-primary: #111827;
     --color-text-secondary: #6B7280;
     --color-text-tertiary: #9CA3AF;
-
-    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
-    --shadow-sm: 0 2px 6px 0 rgba(0, 0, 0, 0.05);
-    --shadow-md: 0 6px 16px 0 rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
-    --shadow-xl: 0 20px 40px 0 rgba(0, 0, 0, 0.16);
-    --shadow-glow: 0 0 20px 0 rgba(99, 102, 241, 0.3);
 
     --space-xs: 4px;
     --space-sm: 8px;

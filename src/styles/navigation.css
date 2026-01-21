@@ -7,28 +7,28 @@
     overflow-y: hidden;
     flex-wrap: wrap;
     backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.8);
+    background: color-mix(in srgb, var(--color-white) 80%, transparent);
 }
 
 #nav button {
-    padding: 10px 16px;
+    padding: var(--radius-md) var(--space-lg);
     border: 1px solid var(--color-border);
     background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
     color: var(--color-text-secondary);
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--space-sm);
     font-size: 13px;
     font-weight: 600;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     white-space: nowrap;
     position: relative;
     letter-spacing: 0.2px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 6px color-mix(in srgb, #000000 4%, transparent);
 }
 
 #nav button.active {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+    box-shadow: 0 8px 24px color-mix(in srgb, var(--color-primary) 35%, transparent);
     border: none;
 }

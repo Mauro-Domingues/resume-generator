@@ -3,14 +3,14 @@
     position: absolute;
     border: none;
     background: transparent;
-    right: 4px;
+    right: var(--space-xs);
     cursor: pointer;
     border-radius: 50%;
     height: 30px;
     width: 30px;
     font-size: 50px;
     margin: 0;
-    color: #DC2626;
+    color: var(--color-error);
 }
 
 .remove {
@@ -20,7 +20,7 @@
 
 .banner-remove {
     top: -7px;
-    right: 4px;
+    right: var(--space-xs);
 }
 
 .keyword-tag .keyword-remove {
@@ -34,7 +34,7 @@
 .keywords-add,
 .btn-add-keyword,
 .add-item {
-    padding: 6px 10px;
+    padding: var(--radius-sm) var(--radius-md);
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
     border: none;
@@ -47,7 +47,7 @@
     position: relative;
     overflow: hidden;
     letter-spacing: 0.2px;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.2);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 .description-tag,
@@ -65,7 +65,7 @@
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     cursor: pointer;
     font-weight: 700;
     font-size: 13px;
@@ -74,5 +74,5 @@
     position: relative;
     overflow: hidden;
     letter-spacing: 0.4px;
-    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 6px 18px color-mix(in srgb, var(--color-primary) 25%, transparent);
 }

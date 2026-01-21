@@ -6,9 +6,9 @@
     max-height: calc(100vh - 280px);
     overflow-y: auto;
     background: var(--color-bg-primary);
-    border-radius: 16px;
-    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12),
-        0 0 1px rgba(99, 102, 241, 0.5);
+    border-radius: var(--space-lg);
+    box-shadow: 0 12px 48px color-mix(in srgb, #000000 12%, transparent),
+        0 0 1px color-mix(in srgb, var(--color-primary) 50%, transparent);
     animation: panelSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
 }
@@ -54,7 +54,7 @@ h3,
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 12px 14px;
+    padding: var(--space-md) 14px;
     border: 1.5px solid var(--color-border);
     border-radius: var(--radius-md);
     font-family: inherit;
@@ -74,15 +74,15 @@ h3,
 }
 
 .form-group input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: var(--radius-xl);
+    height: var(--radius-xl);
     margin-right: var(--space-sm);
     cursor: pointer;
     accent-color: var(--color-primary);
 }
 
 .form-group input[type="color"] {
-    padding: 4px;
+    padding: var(--space-xs);
     height: 44px;
     cursor: pointer;
     border-radius: var(--radius-md);
@@ -101,11 +101,11 @@ ul {
 
 .item {
     border: 1px solid var(--color-border-light);
-    background: linear-gradient(135deg, var(--color-bg-primary) 0%, rgba(99, 102, 241, 0.03) 100%);
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, color-mix(in srgb, var(--color-primary) 3%, transparent) 100%);
     padding: var(--space-lg);
     margin: var(--space-lg) 0;
-    border-radius: 12px;
-    border-left: 4px solid var(--color-primary);
+    border-radius: var(--space-md);
+    border-left: var(--space-xs) solid var(--color-primary);
     transition: all cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
     position: relative;
     backdrop-filter: blur(2px);
@@ -115,7 +115,7 @@ ul {
 .item select,
 .item textarea {
     width: 100%;
-    padding: 10px 12px;
+    padding: var(--radius-md) var(--space-md);
     border: 1.5px solid var(--color-border);
     border-radius: var(--radius-sm);
     font-family: inherit;
@@ -143,7 +143,7 @@ ul {
     width: 209.7mm;
     max-width: 100%;
     aspect-ratio: 209.7 / 297;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 32px 0 color-mix(in srgb, #000000 12%, transparent);
     margin-bottom: 70px;
     border: 1px solid var(--color-border);
 }
@@ -157,7 +157,7 @@ ul {
     font-weight: 700;
     color: white;
     letter-spacing: 0.4px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    text-shadow: 0 1px 2px color-mix(in srgb, #000000 10%, transparent);
     position: relative;
 }
 

@@ -17,10 +17,10 @@
 .form-group::before {
     content: '';
     position: absolute;
-    left: -12px;
+    left: calc(-1 * var(--space-md));
     top: 0;
     width: 3px;
-    height: 24px;
+    height: var(--space-xl);
     background: linear-gradient(180deg, var(--color-primary) 0%, transparent 100%);
     border-radius: 2px;
     opacity: 0;
@@ -39,9 +39,9 @@
 :is(.form-group input, .form-group select, .form-group textarea):focus {
     border-color: var(--color-primary);
     background: var(--color-bg-hover);
-    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15),
-        0 0 12px rgba(99, 102, 241, 0.2),
-        inset 0 1px 3px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 0 0 var(--space-xs) color-mix(in srgb, var(--color-primary) 15%, transparent),
+        0 0 var(--space-md) color-mix(in srgb, var(--color-primary) 20%, transparent),
+        inset 0 1px 3px color-mix(in srgb, #000000 2%, transparent);
     transform: translateY(-1px);
 }
 
@@ -52,7 +52,7 @@
     right: -40px;
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 10%, transparent) 0%, transparent 70%);
     border-radius: 50%;
     pointer-events: none;
     filter: blur(30px);
@@ -63,8 +63,8 @@
 .item:hover {
     border-color: var(--color-primary);
     border-left-color: var(--color-accent);
-    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15),
-        0 0 1px rgba(99, 102, 241, 0.5);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 15%, transparent),
+        0 0 1px color-mix(in srgb, var(--color-primary) 50%, transparent);
     transform: translateY(-2px);
 }
 
@@ -74,8 +74,8 @@
 
 :is(.item input, .item select, .item textarea):focus {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1),
-        0 0 8px rgba(99, 102, 241, 0.15);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 10%, transparent),
+        0 0 8px color-mix(in srgb, var(--color-primary) 15%, transparent);
     background: linear-gradient(135deg, var(--color-bg-hover) 0%, var(--color-bg-primary) 100%);
     transform: translateY(-1px);
 }

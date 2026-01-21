@@ -19,8 +19,8 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: var(--space-sm);
+    height: var(--space-sm);
 }
 
 ::-webkit-scrollbar-track {
@@ -29,15 +29,15 @@ body {
 
 ::-webkit-scrollbar-thumb {
     background: var(--color-border);
-    border-radius: 4px;
+    border-radius: var(--space-xs);
     transition: background var(--transition-fast);
 }
 
 header {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: #FFFFFF;
+    color: var(--color-white);
     padding: var(--space-2xl) var(--space-2xl);
-    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25);
+    box-shadow: 0 12px 32px color-mix(in srgb, var(--color-primary) 25%, transparent);
     position: relative;
     overflow: hidden;
 }
@@ -48,9 +48,9 @@ header h1 {
     letter-spacing: -0.6px;
     position: relative;
     z-index: 1;
-    margin-bottom: 6px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    background: linear-gradient(135deg, white 0%, rgba(255, 255, 255, 0.9) 100%);
+    margin-bottom: var(--radius-sm);
+    text-shadow: 0 2px 10px color-mix(in srgb, #000000 15%, transparent);
+    background: linear-gradient(135deg, white 0%, color-mix(in srgb, var(--color-white) 90%, transparent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -94,7 +94,7 @@ html {
     font-weight: 600;
     z-index: 10000;
     transition: top var(--transition-fast);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 32px 0 color-mix(in srgb, #000000 12%, transparent);
 }
 
 .visually-hidden {
