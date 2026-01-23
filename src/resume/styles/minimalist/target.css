@@ -1,7 +1,0 @@
-#target {
-    flex-direction: column;
-}
-
-#target>.content {
-    font-weight: 500;
-}

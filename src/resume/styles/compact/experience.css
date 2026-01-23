@@ -1,4 +1,0 @@
-/* Compact Content Styles */
-:is(#experiences, #graduations, #specializations, #projects) .content {
-    font-size: 0.9em;
-}

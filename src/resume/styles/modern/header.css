@@ -1,42 +1,55 @@
 #header {
-    background-color: #2c3e50;
-    /* Dark Blue-Gray */
-    color: white;
-    padding: 2.5rem 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    /* Center align header info */
-    justify-content: center;
-    gap: 1rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2rem 2rem 0 2rem;
+  background-color: transparent;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 #header>.title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-    color: white;
-    text-align: center;
-    padding: 0;
+  padding: 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: white;
+  line-height: 1.1;
+  text-align: left;
 }
 
 #header>.contact {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+  width: 100%;
 }
 
 #header>.contact>li>a {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: inherit;
-    font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 400;
+  font-size: 0.85rem;
 }
 
 #header>.contact>li>a>svg {
-    fill: #3498db;
-    /* Blue accent for icons */
+  color: rgba(255, 255, 255, 0.6);
+  width: 1rem;
+  height: 1rem;
+}
+
+#header>.contact>li>a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  text-decoration: none;
+}
+
+#header>.contact>li>a>svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--font-color);
 }
