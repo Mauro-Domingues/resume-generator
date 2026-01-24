@@ -19,8 +19,7 @@ section>.title {
   font-weight: 700;
   font-size: 1.2rem;
   text-transform: uppercase;
-  border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #ccc;
   padding: 0.5rem 0;
   margin-bottom: 1.2rem;
   letter-spacing: 0.2rem;
