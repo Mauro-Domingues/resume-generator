@@ -1,15 +1,18 @@
 export class PersistenceManager {
     static #STORAGE_KEY = 'resume_generator_state';
+    static #PERSISTENCE_STATE;
+
+    static set persistenceState(exampleMode) {
+        this.#PERSISTENCE_STATE = exampleMode !== 'true';
+    }
 
     static save(data) {
+        if (!this.#PERSISTENCE_STATE) return;
         localStorage.setItem(this.#STORAGE_KEY, JSON.stringify(data));
     }
 
     static async load() {
-        const params = new URLSearchParams(globalThis.location.search);
-        const example = params.get("example");
-
-        if (example === 'true') {
+        if (!this.#PERSISTENCE_STATE) {
             const example = await fetch('src/assets/example.json')
 
             return example.json();
@@ -20,6 +23,7 @@ export class PersistenceManager {
     }
 
     static clear() {
+        if (!this.#PERSISTENCE_STATE) return;
         localStorage.removeItem(this.#STORAGE_KEY);
     }
 }

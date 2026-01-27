@@ -9,11 +9,13 @@ import { KeywordManager } from './keyword-manager.js';
 import { Description } from './description.js';
 import { FormActions } from './form-actions.js';
 import { IframeScaler } from './iframe-scaler.js';
+import { PersistenceManager } from './persistence.js';
 
 class Main {
   constructor() {
     this.#initializeComponents();
     this.#setupKeywordManagers();
+    this.#setupPersistence()
     this.#setupFormActions();
     this.iframeScaler = new IframeScaler();
   }
@@ -48,6 +50,13 @@ class Main {
     };
 
     new FormActions(sectionManagers).setupAllActions();
+  }
+
+  #setupPersistence() {
+    const params = new URLSearchParams(globalThis.location.search);
+    const example = params.get("example");
+
+    PersistenceManager.persistenceState = example
   }
 }
 
