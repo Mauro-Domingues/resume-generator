@@ -9,16 +9,16 @@ export class Experience extends KeywordMixin(BaseListManager) {
   createItemHTML(index) {
     return `
       <label for="experienceList-title-${index}">CARGO</label>
-      <input id="experienceList-title-${index}" class="title" placeholder="Cargo" aria-label="Cargo" />
+      <input id="experienceList-title-${index}" class="title" placeholder="Cargo" aria-label="Cargo"/>
       <label for="experienceList-company-${index}">EMPRESA</label>
-      <input id="experienceList-company-${index}" class="company" placeholder="Empresa" aria-label="Empresa" />
+      <input id="experienceList-company-${index}" class="company" placeholder="Empresa" aria-label="Empresa"/>
       <label for="experienceList-startsAt-${index}">DATA DE INÍCIO</label>
-      <input type="date" id="experienceList-startsAt-${index}" class="startsAt" aria-label="Data de início" />
+      <input type="date" id="experienceList-startsAt-${index}" class="startsAt" aria-label="Data de início"/>
       <label for="experienceList-endsAt-${index}">DATA DE TÉRMINO</label>
-      <input type="date" id="experienceList-endsAt-${index}" class="endsAt" aria-label="Data de término" />
+      <input type="date" id="experienceList-endsAt-${index}" class="endsAt" aria-label="Data de término"/>
       <div class="form-group">
         <label for="experienceList-currently-${index}">
-          <input type="checkbox" id="experienceList-currently-${index}" class="currently" />
+          <input type="checkbox" id="experienceList-currently-${index}" class="currently"/>
           Trabalha Atualmente?
         </label>
       </div>
