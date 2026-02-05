@@ -100,9 +100,9 @@ export class Header {
 
     item.innerHTML = `
       <label for="personalLink-title-${index}">NOME DO SITE</label>
-      <input id="personalLink-title-${index}" class="title" placeholder="Nome do Site (e.g., Portfolio)" aria-label="Nome do link"/>
+      <input id="personalLink-title-${index}" class="title" placeholder="Nome do Site (e.g., Portfolio)" required aria-required="true" aria-label="Nome do link"/>
       <label for="personalLink-url-${index}">URL DO SITE</label>
-      <input id="personalLink-url-${index}" class="url" placeholder="URL do Site" aria-label="URL do link"/>
+      <input id="personalLink-url-${index}" class="url" placeholder="URL do Site" required aria-required="true" aria-label="URL do link"/>
     `;
 
     const removeBtn = document.createElement('button');

@@ -28,6 +28,8 @@ export class KeywordManager {
     input.placeholder = 'palavra-chave';
     input.id = `${container.id}-keyword-input-${index}`;
     input.setAttribute('aria-label', 'Texto da palavra-chave');
+    input.required = true;
+    input.ariaRequired = true;
     if (value) input.value = value;
 
     const removeBtn = document.createElement('button');

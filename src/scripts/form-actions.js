@@ -1,6 +1,7 @@
 import { DataCollector } from './data-collector.js';
 import { RegisterTemplate } from './registerTemplate.js';
 import { PersistenceManager } from './persistence.js';
+import { Validator } from './validator.js';
 
 export class FormActions {
   #registerTemplate;
@@ -135,6 +136,12 @@ export class FormActions {
     if (!downloadBtn) return;
 
     downloadBtn.addEventListener('click', async () => {
+      const validation = Validator.validate();
+
+      if (!validation.isValid) {
+        return;
+      }
+
       const variables = DataCollector.collect();
       const htmlContent = await this.#registerTemplate.getContent(variables);
 

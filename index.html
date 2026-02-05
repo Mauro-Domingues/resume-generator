@@ -91,7 +91,7 @@
 
             <div class="form-group">
               <label for="templateModel">Modelo do Currículo</label>
-              <select id="templateModel" aria-describedby="template-model-desc">
+              <select id="templateModel" required aria-required="true" aria-describedby="template-model-desc">
                 <option selected value="default">Padrão</option>
                 <option value="professional">Profissional</option>
               </select>
@@ -100,7 +100,7 @@
 
             <div class="form-group">
               <label for="templateLanguage">Idioma</label>
-              <select id="templateLanguage" aria-describedby="template-language-desc">
+              <select id="templateLanguage" required aria-required="true" aria-describedby="template-language-desc">
                 <option selected value="ptBr">Português (Brasil)</option>
                 <option value="enUs">English (US)</option>
               </select>
@@ -109,14 +109,14 @@
 
             <div class="form-group">
               <label for="templateMonochrome">
-                <input type="checkbox" id="templateMonochrome"/>
+                <input type="checkbox" aria-required="false" id="templateMonochrome"/>
                 Modo Monocromático
               </label>
             </div>
 
             <div class="form-group">
               <label for="templateFontFamily">Fonte</label>
-              <select id="templateFontFamily" aria-describedby="template-font-family">
+              <select id="templateFontFamily" required aria-required="true" aria-describedby="template-font-family">
                 <option value="'Open Sans', sans-serif" selected>Open Sans</option>
                 <option value="'Courier New', monospace">Courier New</option>
                 <option value="'Franklin Gothic Medium', sans-serif">Franklin Gothic Medium</option>
@@ -138,13 +138,14 @@
 
             <div class="form-group">
               <label for="templateFontColor">Cor da Fonte</label>
-              <input type="color" id="templateFontColor" value="#706f6f" aria-label="Selecionar cor da fonte"/>
+              <input type="color" id="templateFontColor" value="#706f6f" required aria-required="true"
+                aria-label="Selecionar cor da fonte"/>
             </div>
 
             <div class="form-group">
               <label for="templateFontSize">Tamanho da Fonte (px)</label>
-              <input type="number" id="templateFontSize" value="16" min="8" max="32" step="1"
-                aria-describedby="font-size-desc"/>
+              <input type="number" id="templateFontSize" value="16" min="8" max="32" step="1" required
+                aria-required="true" aria-describedby="font-size-desc"/>
               <span id="font-size-desc" class="visually-hidden">Tamanho da fonte entre 8 e 32 pixels</span>
             </div>
           </form>
@@ -155,7 +156,7 @@
           <form aria-label="Formulário de informações do cabeçalho">
             <div class="form-group">
               <label for="headerName">Nome Completo</label>
-              <input id="headerName" type="text" autocomplete="name" aria-required="false"/>
+              <input id="headerName" type="text" autocomplete="name" required aria-required="true"/>
             </div>
 
             <div class="form-group">

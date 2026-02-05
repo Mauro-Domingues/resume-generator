@@ -30,6 +30,8 @@ export class Description {
     textarea.className = 'description-input';
     textarea.placeholder = 'Descrição';
     textarea.setAttribute('aria-label', 'Texto da descrição');
+    textarea.required = true;
+    textarea.ariaRequired = true;
     if (value) textarea.value = value;
 
     const removeBtn = document.createElement('button');

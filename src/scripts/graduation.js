@@ -9,21 +9,21 @@ export class Graduation extends KeywordMixin(BaseListManager) {
   createItemHTML(index) {
     return `
       <label for="graduationList-title-${index}">TÍTULO</label>
-      <input id="graduationList-title-${index}" class="title" placeholder="Título" aria-label="Título do curso"/>
+      <input id="graduationList-title-${index}" class="title" placeholder="Título" required aria-required="true" aria-label="Título do curso"/>
       <label for="graduationList-institution-${index}">INSTITUIÇÃO</label>
-      <input id="graduationList-institution-${index}" class="institution" placeholder="Instituição" aria-label="Nome da instituição"/>
+      <input id="graduationList-institution-${index}" class="institution" placeholder="Instituição" required aria-required="true" aria-label="Nome da instituição"/>
       <label for="graduationList-startsAt-${index}">DATA DE INÍCIO</label>
-      <input type="date" id="graduationList-startsAt-${index}" class="startsAt" placeholder="Início" aria-label="Data de início"/>
+      <input type="date" id="graduationList-startsAt-${index}" class="startsAt" required aria-required="true" placeholder="Início" aria-label="Data de início"/>
       <label for="graduationList-endsAt-${index}">DATA DE TÉRMINO</label>
-      <input type="date" id="graduationList-endsAt-${index}" class="endsAt" placeholder="Fim" aria-label="Data de término"/>
+      <input type="date" id="graduationList-endsAt-${index}" class="endsAt" aria-required="false" placeholder="Fim" aria-label="Data de término"/>
       <div class="form-group">
         <label for="graduationList-currently-${index}">
-          <input type="checkbox" id="graduationList-currently-${index}" class="currently"/>
+          <input type="checkbox" id="graduationList-currently-${index}" aria-required="false" class="currently"/>
           Cursa Atualmente?
         </label>
       </div>
       <label for="graduationList-description-${index}">DESCRIÇÃO</label>
-      <textarea id="graduationList-description-${index}" class="description" placeholder="Descrição" aria-label="Descrição do curso"></textarea>
+      <textarea id="graduationList-description-${index}" class="description" placeholder="Descrição" required aria-required="true" aria-label="Descrição do curso"></textarea>
     `;
   }
 

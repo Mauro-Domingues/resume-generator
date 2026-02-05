@@ -24,9 +24,9 @@ export class Skills {
 
     item.innerHTML = `
       <label for="skillsList-title-${index}">HABILIDADE</label>
-      <input id="skillsList-title-${index}" class="title" placeholder="Habilidade" aria-label="Nome da habilidade"/>
+      <input id="skillsList-title-${index}" class="title" placeholder="Habilidade" required aria-required="true" aria-label="Nome da habilidade"/>
       <label for="skillsList-level-${index}">NÍVEL DE PROFICIÊNCIA</label>
-      <select id="skillsList-level-${index}" class="level" aria-label="Nível de proficiência">
+      <select id="skillsList-level-${index}" class="level" required aria-required="true" aria-label="Nível de proficiência">
         <option value="basic">básico</option>
         <option value="basic-average">iniciante</option>
         <option value="average">intermediário</option>
