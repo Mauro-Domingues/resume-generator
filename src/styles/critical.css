@@ -50,7 +50,7 @@ header h1 {
     z-index: 1;
     margin-bottom: var(--radius-sm);
     text-shadow: 0 0.125rem 0.625rem color-mix(in srgb, #000000 15%, transparent);
-    background: linear-gradient(135deg, white 0%, color-mix(in srgb, var(--color-white) 90%, transparent) 100%);
+    background: linear-gradient(135deg, var(--color-white) 0%, color-mix(in srgb, var(--color-white) 90%, transparent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -74,12 +74,12 @@ html {
 
 ::selection {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
 }
 
 ::-moz-selection {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
 }
 
 .skip-link {
@@ -87,14 +87,14 @@ html {
     top: -6.25rem;
     left: 0;
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
     padding: var(--space-lg) var(--space-xl);
     text-decoration: none;
     border-radius: 0 0 var(--radius-md) 0;
     font-weight: 600;
     z-index: 10000;
     transition: top var(--transition-fast);
-    box-shadow: 0 0.75rem 2rem 0 color-mix(in srgb, #000000 12%, transparent);
+    box-shadow: 0 0.75rem 2rem 0 color-mix(in srgb, var(--color-text-primary) 12%, transparent);
 }
 
 .visually-hidden {

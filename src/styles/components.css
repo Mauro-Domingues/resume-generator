@@ -8,7 +8,7 @@
     overflow-y: auto;
     background: var(--color-bg-primary);
     border-radius: var(--space-lg);
-    box-shadow: 0 0.75rem 3rem color-mix(in srgb, #000000 12%, transparent),
+    box-shadow: 0 0.75rem 3rem color-mix(in srgb, var(--color-text-primary) 12%, transparent),
         0 0 0.0625rem color-mix(in srgb, var(--color-primary) 50%, transparent);
     animation: panelSlideIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
@@ -148,7 +148,7 @@ ul {
     width: 209.7mm;
     max-width: 100%;
     height: fit-content;
-    box-shadow: 0 0.75rem 2rem 0 color-mix(in srgb, #000000 12%, transparent);
+    box-shadow: 0 0.75rem 2rem 0 color-mix(in srgb, var(--color-text-primary) 12%, transparent);
     margin-bottom: 4.375rem;
     border: 0.0625rem solid var(--color-border);
 }
@@ -160,9 +160,9 @@ ul {
     border-bottom: 0.125rem solid var(--color-primary-light);
     font-size: 0.9375rem;
     font-weight: 700;
-    color: white;
+    color: var(--color-white);
     letter-spacing: 0.025rem;
-    text-shadow: 0 0.0625rem 0.125rem color-mix(in srgb, #000000 10%, transparent);
+    text-shadow: 0 0.0625rem 0.125rem color-mix(in srgb, var(--color-text-primary) 10%, transparent);
     position: relative;
 }
 
@@ -181,7 +181,7 @@ ul {
 
 button#downloadPdf {
     background: var(--color-primary);
-    color: white;
+    color: var(--color-white);
 }
 
 .input-error {
@@ -218,8 +218,8 @@ button#downloadPdf {
     font-weight: 500;
     font-size: 0.875rem;
     backdrop-filter: blur(0.5rem);
-    border: 0.0625rem solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    border: 0.0625rem solid color-mix(in srgb, var(--color-white) 20%, transparent);
+    box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--color-text-primary) 20%, transparent);
     opacity: 0;
     transform: translateX(-120%);
     transition: all 0.3s ease-out;

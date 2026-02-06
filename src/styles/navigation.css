@@ -23,12 +23,12 @@
     white-space: nowrap;
     position: relative;
     letter-spacing: 0.0125rem;
-    box-shadow: 0 0.125rem 0.375rem color-mix(in srgb, #000000 4%, transparent);
+    box-shadow: 0 0.125rem 0.375rem color-mix(in srgb, var(--color-text-primary) 4%, transparent);
 }
 
 #nav button.active {
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: white;
+    color: var(--color-white);
     box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--color-primary) 35%, transparent);
     border: none;
 }
