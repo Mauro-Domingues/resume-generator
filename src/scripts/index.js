@@ -1,15 +1,15 @@
-import { Navigation } from './navigation.js';
-import { Header } from './header.js';
-import { Skills } from './skills.js';
-import { Experience } from './experience.js';
-import { Graduation } from './graduation.js';
-import { Project } from './projects.js';
-import { Specialization } from './specialization.js';
-import { KeywordManager } from './keyword-manager.js';
-import { Description } from './description.js';
-import { FormActions } from './form-actions.js';
-import { IframeScaler } from './iframe-scaler.js';
-import { PersistenceManager } from './persistence.js';
+import { Navigation } from './navigation.js?v=1.0.0';
+import { Header } from './header.js?v=1.0.0';
+import { Skills } from './skills.js?v=1.0.0';
+import { Experience } from './experience.js?v=1.0.0';
+import { Graduation } from './graduation.js?v=1.0.0';
+import { Project } from './projects.js?v=1.0.0';
+import { Specialization } from './specialization.js?v=1.0.0';
+import { KeywordManager } from './keyword-manager.js?v=1.0.0';
+import { Description } from './description.js?v=1.0.0';
+import { FormActions } from './form-actions.js?v=1.0.0';
+import { IframeScaler } from './iframe-scaler.js?v=1.0.0';
+import { PersistenceManager } from './persistence.js?v=1.0.0';
 
 class Main {
   constructor() {

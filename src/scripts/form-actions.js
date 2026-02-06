@@ -1,7 +1,7 @@
-import { DataCollector } from './data-collector.js';
-import { RegisterTemplate } from './registerTemplate.js';
-import { PersistenceManager } from './persistence.js';
-import { Validator } from './validator.js';
+import { DataCollector } from './data-collector.js?v=1.0.0';
+import { RegisterTemplate } from './registerTemplate.js?v=1.0.0';
+import { PersistenceManager } from './persistence.js?v=1.0.0';
+import { Validator } from './validator.js?v=1.0.0';
 
 export class FormActions {
   #registerTemplate;

@@ -1,5 +1,5 @@
-import { ParseContent } from './parseContent.js';
-import { phoneMasker } from './phone-masker.js';
+import { ParseContent } from './parseContent.js?v=1.0.0';
+import { phoneMasker } from './phone-masker.js?v=1.0.0';
 
 export class RegisterTemplate {
   #parseContent;

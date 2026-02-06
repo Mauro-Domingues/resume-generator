@@ -1,4 +1,4 @@
-import { KeywordManager } from './keyword-manager.js';
+import { KeywordManager } from './keyword-manager.js?v=1.0.0';
 
 export class DataCollector {
   static collect() {

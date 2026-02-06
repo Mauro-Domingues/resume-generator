@@ -1,4 +1,4 @@
-import { Toast } from './toast.js';
+import { Toast } from './toast.js?v=1.0.0';
 
 export class Validator {
   static #validationRules = {
