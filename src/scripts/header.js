@@ -1,4 +1,4 @@
-import { phoneMasker } from "./phone-masker";
+import { phoneMasker } from "./phone-masker.js";
 
 export class Header {
   #whatsappInput;
