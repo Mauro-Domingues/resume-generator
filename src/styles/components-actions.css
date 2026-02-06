@@ -84,3 +84,9 @@
     content: '\2728';
     margin-right: var(--space-sm);
 }
+
+.input-error:focus {
+    border-color: color-mix(in srgb, var(--color-error) 80%, transparent) !important;
+    box-shadow: 0 0 0 var(--space-xs) color-mix(in srgb, var(--color-error) 20%, transparent),
+        0 0 var(--space-md) color-mix(in srgb, var(--color-error) 25%, transparent) !important;
+}

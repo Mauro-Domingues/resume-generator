@@ -183,3 +183,56 @@ button#downloadPdf {
     background: var(--color-primary);
     color: white;
 }
+
+.input-error {
+    border-color: var(--color-error) !important;
+    background-color: color-mix(in srgb, var(--color-error) 5%, var(--color-bg-primary)) !important;
+    box-shadow: 0 0 0 0.1875rem color-mix(in srgb, var(--color-error) 15%, transparent) !important;
+}
+
+.input-error-message {
+    display: block;
+    font-size: 0.75rem;
+    margin-bottom: var(--space-sm);
+    color: var(--color-error);
+    font-weight: 500;
+    animation: slideDown 0.2s ease-out;
+}
+
+#toast-container {
+    position: fixed;
+    bottom: var(--space-lg);
+    left: var(--space-lg);
+    right: var(--space-lg);
+    max-width: 28rem;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.toast {
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--space-md);
+    font-weight: 500;
+    font-size: 0.875rem;
+    backdrop-filter: blur(0.5rem);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transform: translateX(-120%);
+    transition: all 0.3s ease-out;
+    pointer-events: auto;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast-error {
+    background-color: color-mix(in srgb, var(--color-error) 90%, var(--color-bg-primary));
+    color: var(--color-white);
+    border-color: color-mix(in srgb, var(--color-error) 30%, transparent);
+}

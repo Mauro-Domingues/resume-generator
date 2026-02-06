@@ -1,3 +1,5 @@
+import { phoneMasker } from "./phone-masker";
+
 export class Header {
   #whatsappInput;
   #personalLinksContainer;
@@ -25,9 +27,7 @@ export class Header {
     }
 
     if (headerData.contact?.whatsapp?.value) {
-      this.#whatsappInput.value = this.#applyWhatsappMask(
-        headerData.contact.whatsapp.value,
-      );
+      this.#whatsappInput.value = phoneMasker(headerData.contact.whatsapp.value);
     }
   }
 
@@ -50,38 +50,9 @@ export class Header {
     });
   }
 
-  #applyWhatsappMask(value) {
-    const numbers = value.replaceAll(/\D/g, '');
-
-    const formats = {
-      13: /^(\d{2})(\d{2})(\d{5})(\d{4})$/,
-      12: /^(\d{2})(\d{2})(\d{4})(\d{4})$/,
-      11: /^(\d{2})(\d{5})(\d{4})$/,
-      10: /^(\d{2})(\d{4})(\d{4})$/,
-      9: /^(\d{5})(\d{4})$/,
-      8: /^(\d{4})(\d{4})$/,
-    };
-
-    const replacements = {
-      13: '+$1 ($2) $3-$4',
-      12: '+$1 ($2) $3-$4',
-      11: '($1) $2-$3',
-      10: '($1) $2-$3',
-      9: '$1-$2',
-      8: '$1-$2',
-    };
-
-    const format = formats[numbers.length];
-    const replacement = replacements[numbers.length];
-
-    return format && replacement
-      ? numbers.replace(format, replacement)
-      : numbers;
-  }
-
   #setupWhatsappMask() {
     this.#whatsappInput?.addEventListener('input', event => {
-      event.target.value = this.#applyWhatsappMask(event.target.value);
+      event.target.value = phoneMasker(event.target.value);
     });
   }
 
@@ -100,9 +71,9 @@ export class Header {
 
     item.innerHTML = `
       <label for="personalLink-title-${index}">NOME DO SITE</label>
-      <input id="personalLink-title-${index}" class="title" placeholder="Nome do Site (e.g., Portfolio)" required aria-required="true" aria-label="Nome do link"/>
+      <input id="personalLink-title-${index}" class="title" type="text" placeholder="Nome do Site (e.g., Portfolio)" required aria-required="true" aria-label="Nome do link"/>
       <label for="personalLink-url-${index}">URL DO SITE</label>
-      <input id="personalLink-url-${index}" class="url" placeholder="URL do Site" required aria-required="true" aria-label="URL do link"/>
+      <input id="personalLink-url-${index}" class="url" type="url" placeholder="URL do Site" required aria-required="true" aria-label="URL do link"/>
     `;
 
     const removeBtn = document.createElement('button');

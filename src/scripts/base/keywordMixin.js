@@ -10,6 +10,8 @@ export const KeywordMixin = Base =>
             input.className = 'keyword-input';
             input.type = 'text';
             input.placeholder = 'palavra-chave';
+            input.required = true;
+            input.ariaRequired = true;
             input.id = `${this.listId}-${containerIndex}-keyword-input-${index}`;
             input.setAttribute('aria-label', 'Texto da palavra-chave');
             if (value) input.value = value;
