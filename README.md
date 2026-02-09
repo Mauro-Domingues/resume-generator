@@ -10,7 +10,7 @@ Bem-vindo ao **Construtor de Currículo**, uma ferramenta online (mobile e deskt
 
 Você pode visualizar um currículo fictício já preenchido para se inspirar:
 
-- Ver exemplo interativo: [exemplo interaivo](https://mauro-domingues.github.io/resume-generator?example=true)
+- Ver exemplo interativo: [exemplo interativo](https://mauro-domingues.github.io/resume-generator?example=true)
 - Baixar currículo em PDF: [exemplo.pdf](https://github.com/user-attachments/files/24886412/example.pdf)
 <img width="1296" height="971" alt="example" src="https://github.com/user-attachments/assets/492e27cf-cdc9-421d-b38f-94d73db59937"/>
 
