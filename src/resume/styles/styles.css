@@ -47,3 +47,9 @@ ul {
 @page {
   margin: 0;
 }
+
+@media print {
+  body {
+    transform: none !important;
+  }
+}

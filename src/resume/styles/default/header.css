@@ -11,6 +11,7 @@
 #header>.contact {
   display: flex;
   flex: 0;
+  margin-right: 0.4375rem;
   flex-direction: column;
   align-items: flex-start;
   height: fit-content;

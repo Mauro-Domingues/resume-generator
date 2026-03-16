@@ -1,5 +1,5 @@
 import { DataCollector } from './data-collector.js?v=1.0.0';
-import { RegisterTemplate } from './registerTemplate.js?v=1.0.0';
+import { RegisterTemplate } from './register-template.js?v=1.0.0';
 import { PersistenceManager } from './persistence.js?v=1.0.0';
 import { Validator } from './validator.js?v=1.0.0';
 
