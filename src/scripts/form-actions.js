@@ -17,10 +17,7 @@ export class FormActions {
     const previewFrame = document.querySelector('#previewFrame');
 
     if (previewFrame) {
-      const htmlContent = await this.#registerTemplate.getContent(variables);
-      const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
-      const url = URL.createObjectURL(blob);
-      previewFrame.src = url;
+      previewFrame.srcdoc = await this.#registerTemplate.getContent(variables);
     }
   }
 
@@ -135,44 +132,11 @@ export class FormActions {
     const downloadBtn = document.querySelector('#downloadPdf');
     if (!downloadBtn) return;
 
-    downloadBtn.addEventListener('click', async () => {
-      const validation = Validator.validate();
+    downloadBtn.addEventListener('click', () => {
+      if (!Validator.validate().isValid) return;
 
-      if (!validation.isValid) {
-        return;
-      }
-
-      const variables = DataCollector.collect();
-      const htmlContent = await this.#registerTemplate.getContent(variables);
-
-      const autoPrintScript = `
-      <script>
-        const executePrint = () => {
-          setTimeout(() => {
-            globalThis.print();
-            globalThis.onafterprint = () => {
-              globalThis.location.replace(globalThis.location.origin);
-            };
-          }, 100);
-        };
-
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', executePrint);
-        } else {
-          executePrint();
-        }
-      </script>
-    `;
-
-      const blob = new Blob(
-        [htmlContent.replace('</body>', `${autoPrintScript}</body>`)],
-        {
-          type: 'text/html;charset=utf-8',
-        },
-      );
-      const url = URL.createObjectURL(blob);
-
-      globalThis.location.replace(url);
+      const previewFrame = document.querySelector('#previewFrame');
+      previewFrame?.contentWindow?.print();
     });
   }
 
