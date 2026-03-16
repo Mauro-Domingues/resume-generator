@@ -1,5 +1,5 @@
-import { BaseListManager } from './base/baseListManager.js?v=1.0.0';
-import { KeywordMixin } from './base/keywordMixin.js?v=1.0.0';
+import { BaseListManager } from './base/base-list-manager.js?v=1.0.0';
+import { KeywordMixin } from './base/keyword-mixin.js?v=1.0.0';
 
 export class Project extends KeywordMixin(BaseListManager) {
   constructor() {
