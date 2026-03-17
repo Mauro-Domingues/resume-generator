@@ -13,7 +13,9 @@ export class PersistenceManager {
 
     static async load() {
         if (!this.#PERSISTENCE_STATE) {
-            const example = await fetch('src/assets/example.json');
+            const example = await fetch('src/assets/example.json', {
+                cache: 'force-cache'
+            });
 
             return example.json();
         }

@@ -124,8 +124,6 @@ export class FormActions {
       childList: true,
       subtree: true,
     });
-
-    this.#updatePreview();
   }
 
   #setupDownloadPDFButton() {
