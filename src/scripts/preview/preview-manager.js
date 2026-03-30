@@ -1,5 +1,5 @@
 import { getBasePreviewHtml } from './base-preview.js?v=1.0.0';
-import { translations } from './preview-translations.js?v=1.0.0';
+import { PreviewTranslations } from './preview-translations.js?v=1.0.0';
 import { StyleUpdater } from './style-updater.js?v=1.0.0';
 import { HeaderUpdater } from './header-updater.js?v=1.0.0';
 import { AboutUpdater } from './about-updater.js?v=1.0.0';
@@ -15,7 +15,7 @@ export class PreviewManager {
     const iframe = document.querySelector('#previewFrame');
     if (!iframe) return;
 
-    const langDict = translations[data.templateConfig.language];
+    const langDict = PreviewTranslations[data.templateConfig.language];
 
     const isLoaded = iframe.contentDocument?.getElementById('base-style');
 
