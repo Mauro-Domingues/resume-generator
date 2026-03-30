@@ -3,25 +3,20 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 export class ProjectsUpdater {
   static #renderBanner(project) {
     if (!project.banner) return '';
-    return `
-      <figure>
+    return `<figure>
         <img class="project-image" src="${project.banner}" alt="banner of ${project.title}">
-      </figure>
-    `;
+      </figure>`;
   }
 
   static #renderLink(project) {
     if (!project.link) return '';
-    return `
-      <a href="${project.link.ref}" target="_blank">
+    return `<a href="${project.link.ref}" target="_blank">
         (${project.link.value})
-      </a>
-    `;
+      </a>`;
   }
 
   static #renderItem(project) {
-    return `
-      <li>
+    return `<li>
         <article class="project">
           ${ProjectsUpdater.#renderBanner(project)}
           <div class="content">
@@ -33,8 +28,7 @@ export class ProjectsUpdater {
             <p>${project.description}</p>
           </div>
         </article>
-      </li>
-    `;
+      </li>`;
   }
 
   static update(doc, projectSection, langDict) {
@@ -43,14 +37,12 @@ export class ProjectsUpdater {
       return;
     }
 
-    const html = `
-      <section id="projects">
+    const html = `<section id="projects">
         <h1 class="title">${langDict.projectTexts.title}</h1>
         <ul class="project-list">
           ${PreviewUtils.orderArray(projectSection.projects).reduce((acc, project) => acc + ProjectsUpdater.#renderItem(project), '')}
         </ul>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'projects', html);
   }

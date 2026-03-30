@@ -7,15 +7,13 @@ export class TargetUpdater {
       return;
     }
 
-    const html = `
-      <section id="target">
+    const html = `<section id="target">
         <h1 class="title">${langDict.targetTexts.title}</h1>
         <div class="content">
         <p>${targetSection.position}</p>
         </div>
         <span class="keywords">${PreviewUtils.joinKeywords(targetSection.keywords)}</span>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'target', html);
   }

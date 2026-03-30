@@ -3,8 +3,7 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class ExperienceUpdater {
   static #renderItem(experience, langDict, templateConfig) {
-    return `
-      <li>
+    return `<li>
         <article class="occupation">
           <h1 class="occupation-title">
             ${Icons.pinIcon(templateConfig)} ${experience.title}
@@ -19,8 +18,7 @@ export class ExperienceUpdater {
             <p>${experience.description}</p>
           </div>
         </article>
-      </li>
-    `;
+      </li>`;
   }
 
   static update(doc, experienceSection, langDict, templateConfig) {
@@ -29,14 +27,12 @@ export class ExperienceUpdater {
       return;
     }
 
-    const html = `
-      <section id="experiences">
+    const html = `<section id="experiences">
         <h1 class="title">${langDict.experienceTexts.title}</h1>
         <ul class="experiences-list">
           ${PreviewUtils.orderArray(experienceSection.experiences).reduce((acc, exp) => acc + ExperienceUpdater.#renderItem(exp, langDict, templateConfig), '')}
         </ul>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'experiences', html);
   }

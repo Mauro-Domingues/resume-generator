@@ -23,7 +23,6 @@ export class PreviewManager {
       await new Promise(resolve => {
         iframe.onload = resolve;
         iframe.srcdoc = getBasePreviewHtml({
-          templateConfig: data.templateConfig,
           htmlTexts: langDict.html,
         });
       });
@@ -32,7 +31,7 @@ export class PreviewManager {
 
     const doc = iframe.contentDocument;
 
-    StyleUpdater.update(doc, data.templateConfig);
+    await StyleUpdater.update(doc, data);
     HeaderUpdater.update(doc, data.headerSection, data.templateConfig);
     AboutUpdater.update(doc, data.aboutSection, langDict);
     TargetUpdater.update(doc, data.targetSection, langDict);

@@ -56,7 +56,7 @@ export class PreviewUtils {
     }
 
     const tempDiv = doc.createElement('div');
-    tempDiv.innerHTML = htmlContent.trim();
+    tempDiv.innerHTML = htmlContent;
     section = tempDiv.firstElementChild;
 
     const currentIndex = SECTION_ORDER.indexOf(sectionId);

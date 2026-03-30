@@ -2,11 +2,9 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class SkillsUpdater {
   static #renderItem(skill, langDict) {
-    return `
-      <li>
+    return `<li>
         <span>${skill.title} - ${langDict.skillTexts.options[skill.level]}</span>
-      </li>
-    `;
+      </li>`;
   }
 
   static update(doc, skillSection, langDict) {
@@ -15,8 +13,7 @@ export class SkillsUpdater {
       return;
     }
 
-    const html = `
-      <section id="skills">
+    const html = `<section id="skills">
         <h1 class="title">${langDict.skillTexts.title}</h1>
         <span class="keywords">${PreviewUtils.joinKeywords(skillSection.keywords)}</span>
         <div class="content">
@@ -24,8 +21,7 @@ export class SkillsUpdater {
             ${PreviewUtils.orderArray(skillSection.skills).reduce((acc, skill) => acc + SkillsUpdater.#renderItem(skill, langDict), '')}
           </ul>
         </div>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'skills', html);
   }

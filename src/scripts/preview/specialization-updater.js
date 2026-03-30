@@ -3,8 +3,7 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class SpecializationUpdater {
   static #renderItem(spec, langDict, templateConfig) {
-    return `
-      <li>
+    return `<li>
         <article class="specializations">
           <h1 class="specializations-title">
             ${Icons.diplomaIcon(templateConfig)} ${spec.title}
@@ -19,8 +18,7 @@ export class SpecializationUpdater {
             <p>${spec.description}</p>
           </div>
         </article>
-      </li>
-    `;
+      </li>`;
   }
 
   static update(doc, specializationSection, langDict, templateConfig) {
@@ -29,14 +27,12 @@ export class SpecializationUpdater {
       return;
     }
 
-    const html = `
-      <section id="specializations">
+    const html = `<section id="specializations">
         <h1 class="title">${langDict.specializationTexts.title}</h1>
         <ul class="specializations-list">
           ${PreviewUtils.orderArray(specializationSection.specializations).reduce((acc, spec) => acc + SpecializationUpdater.#renderItem(spec, langDict, templateConfig), '')}
         </ul>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'specializations', html);
   }

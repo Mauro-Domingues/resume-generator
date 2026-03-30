@@ -1,6 +1,5 @@
 export const Icons = {
-  diplomaIcon: ({ monochrome, fontColor }) => `
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  diplomaIcon: ({ monochrome, fontColor }) => `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 	viewBox="0 0 511.99 511.99" xml:space="preserve">
 	<rect x="42.663" y="159.997" style="fill:${monochrome ? fontColor + '33' : '#E6E9ED'};" width="426.67" height="277.34"/>
 	<g>
@@ -47,8 +46,7 @@ export const Icons = {
 		s4.781-10.656,10.656-10.656C400.555,309.34,405.336,314.105,405.336,319.996z"/>
 	</g>
 </svg>`,
-  envelopeIcon: ({ monochrome, fontColor }) => `
-<svg width="800px" height="800px" viewBox="0 -5 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  envelopeIcon: ({ monochrome, fontColor }) => `<svg width="800px" height="800px" viewBox="0 -5 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(-2034.000000, -289.000000)"
             fill="${monochrome ? fontColor : '#4B6B82'}">
@@ -60,8 +58,7 @@ export const Icons = {
         </g>
     </g>
 </svg>`,
-  githubIcon: ({ monochrome, fontColor }) => `
-<svg width="800px" height="800px" viewBox="0 0 73 73" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  githubIcon: ({ monochrome, fontColor }) => `<svg width="800px" height="800px" viewBox="0 0 73 73" version="1.1" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g transform="translate(2.000000, 2.000000)" fill-rule="nonzero">
@@ -75,8 +72,7 @@ export const Icons = {
         </g>
     </g>
 </svg>`,
-  institutionIcon: ({ monochrome, fontColor }) => `
-<svg width="800px" height="800px" viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  institutionIcon: ({ monochrome, fontColor }) => `<svg width="800px" height="800px" viewBox="0 0 24 24" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#"
   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <g transform="translate(0 -1028.4)">
@@ -96,13 +92,11 @@ export const Icons = {
     </g>
   </g>
 </svg>`,
-  linkedinIcon: ({ monochrome, fontColor }) => `
-<svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  linkedinIcon: ({ monochrome, fontColor }) => `<svg width="800px" height="800px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <path fill="${monochrome ? fontColor : '#0077B5'}" fill-rule="evenodd"
     d="M20.45175,20.45025 L16.89225,20.45025 L16.89225,14.88075 C16.89225,13.5525 16.86975,11.844 15.04275,11.844 C13.191,11.844 12.90825,13.2915 12.90825,14.7855 L12.90825,20.45025 L9.3525,20.45025 L9.3525,8.997 L12.765,8.997 L12.765,10.563 L12.81375,10.563 C13.2885,9.66225 14.4495,8.71275 16.18125,8.71275 C19.78575,8.71275 20.45175,11.08425 20.45175,14.169 L20.45175,20.45025 Z M5.33925,7.4325 C4.1955,7.4325 3.27375,6.50775 3.27375,5.36775 C3.27375,4.2285 4.1955,3.30375 5.33925,3.30375 C6.47775,3.30375 7.4025,4.2285 7.4025,5.36775 C7.4025,6.50775 6.47775,7.4325 5.33925,7.4325 L5.33925,7.4325 Z M7.11975,20.45025 L3.5565,20.45025 L3.5565,8.997 L7.11975,8.997 L7.11975,20.45025 Z M23.00025,0 L1.0005,0 C0.44775,0 0,0.44775 0,0.99975 L0,22.9995 C0,23.55225 0.44775,24 1.0005,24 L23.00025,24 C23.55225,24 24,23.55225 24,22.9995 L24,0.99975 C24,0.44775 23.55225,0 23.00025,0 L23.00025,0 Z"/>
 </svg>`,
-  locationIcon: ({ monochrome, fontColor }) => `
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -120 512 632" width="800" height="800"
+  locationIcon: ({ monochrome, fontColor }) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -120 512 632" width="800" height="800"
   preserveAspectRatio="xMidYMid meet">
   <g transform="translate(256,256) scale(1.36,0.56) translate(-256,-256)">
     <circle cx="256" cy="256" r="220" fill="${monochrome ? fontColor + '22' : '#E6F4EA'}"/>
@@ -148,8 +142,7 @@ export const Icons = {
       fill="none" stroke="${monochrome ? fontColor + 'cc' : '#00000022'}" stroke-width="6"/>
   </g>
 </svg>`,
-  pinIcon: ({ monochrome, fontColor }) => `
-<svg height="800px" width="800px" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  pinIcon: ({ monochrome, fontColor }) => `<svg height="800px" width="800px" version="1.1" xmlns="http://www.w3.org/2000/svg"
 	xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
 	<path fill="${monochrome ? fontColor : '#444C6D'}" d="M256,206.596c-8.982,0-17.965-0.898-35.93-3.593v39.523h71.86v-39.523
 	C273.965,205.698,264.982,206.596,256,206.596"/>
@@ -173,11 +166,10 @@ export const Icons = {
       d="M9 0C4.03 0 0 4.03 0 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zM1.11 9.68h2.51c.04.91.167 1.814.38 2.7H1.84c-.403-.85-.65-1.764-.73-2.7zm8.57-5.4V1.19c.964.366 1.756 1.08 2.22 2 .205.347.386.708.54 1.08l-2.76.01zm3.22 1.35c.232.883.37 1.788.41 2.7H9.68v-2.7h3.22zM8.32 1.19v3.09H5.56c.154-.372.335-.733.54-1.08.462-.924 1.255-1.64 2.22-2.01zm0 4.44v2.7H4.7c.04-.912.178-1.817.41-2.7h3.21zm-4.7 2.69H1.11c.08-.936.327-1.85.73-2.7H4c-.213.886-.34 1.79-.38 2.7zM4.7 9.68h3.62v2.7H5.11c-.232-.883-.37-1.788-.41-2.7zm3.63 4v3.09c-.964-.366-1.756-1.08-2.22-2-.205-.347-.386-.708-.54-1.08l2.76-.01zm1.35 3.09v-3.04h2.76c-.154.372-.335.733-.54 1.08-.464.92-1.256 1.634-2.22 2v-.04zm0-4.44v-2.7h3.62c-.04.912-.178 1.817-.41 2.7H9.68zm4.71-2.7h2.51c-.08.936-.327 1.85-.73 2.7H14c.21-.87.337-1.757.38-2.65l.01-.05zm0-1.35c-.046-.894-.176-1.78-.39-2.65h2.16c.403.85.65 1.764.73 2.7l-2.5-.05zm1-4H13.6c-.324-.91-.793-1.76-1.39-2.52 1.244.56 2.325 1.426 3.14 2.52h.04zm-9.6-2.52c-.597.76-1.066 1.61-1.39 2.52H2.65c.815-1.094 1.896-1.96 3.14-2.52zm-3.15 12H4.4c.324.91.793 1.76 1.39 2.52-1.248-.567-2.33-1.445-3.14-2.55l-.01.03zm9.56 2.52c.597-.76 1.066-1.61 1.39-2.52h1.76c-.82 1.08-1.9 1.933-3.14 2.48l-.01.04z"/>
   </g>
 </svg>`,
-  whatsappIcon: ({ monochrome, fontColor }) => `
-<svg width="800px" height="800px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  whatsappIcon: ({ monochrome, fontColor }) => `<svg width="800px" height="800px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink">
     <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g transform="translate(-700.000000, -360.000000)" fill="{{#if monochrome}}{{fontColor}}{{else}}#67C15E{{/if}}">
+        <g transform="translate(-700.000000, -360.000000)" fill="${monochrome ? fontColor : '#67C15E'}">
             <path
                 d="M723.993033,360 C710.762252,360 700,370.765287 700,383.999801 C700,389.248451 701.692661,394.116025 704.570026,398.066947 L701.579605,406.983798 L710.804449,404.035539 C714.598605,406.546975 719.126434,408 724.006967,408 C737.237748,408 748,397.234315 748,384.000199 C748,370.765685 737.237748,360.000398 724.006967,360.000398 L723.993033,360.000398 L723.993033,360 Z M717.29285,372.190836 C716.827488,371.07628 716.474784,371.034071 715.769774,371.005401 C715.529728,370.991464 715.262214,370.977527 714.96564,370.977527 C714.04845,370.977527 713.089462,371.245514 712.511043,371.838033 C711.806033,372.557577 710.056843,374.23638 710.056843,377.679202 C710.056843,381.122023 712.567571,384.451756 712.905944,384.917648 C713.258648,385.382743 717.800808,392.55031 724.853297,395.471492 C730.368379,397.757149 732.00491,397.545307 733.260074,397.27732 C735.093658,396.882308 737.393002,395.527239 737.971421,393.891043 C738.54984,392.25405 738.54984,390.857171 738.380255,390.560912 C738.211068,390.264652 737.745308,390.095816 737.040298,389.742615 C736.335288,389.389811 732.90737,387.696673 732.25849,387.470894 C731.623543,387.231179 731.017259,387.315995 730.537963,387.99333 C729.860819,388.938653 729.198006,389.89831 728.661785,390.476494 C728.238619,390.928051 727.547144,390.984595 726.969123,390.744481 C726.193254,390.420348 724.021298,389.657798 721.340985,387.273388 C719.267356,385.42535 717.856938,383.125756 717.448104,382.434484 C717.038871,381.729275 717.405907,381.319529 717.729948,380.938852 C718.082653,380.501232 718.421026,380.191036 718.77373,379.781688 C719.126434,379.372738 719.323884,379.160897 719.549599,378.681068 C719.789645,378.215575 719.62006,377.735746 719.450874,377.382942 C719.281687,377.030139 717.871269,373.587317 717.29285,372.190836 Z">
             </path>

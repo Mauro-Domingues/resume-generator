@@ -11,8 +11,7 @@ export class AboutUpdater {
       return;
     }
 
-    const html = `
-      <section id="about">
+    const html = `<section id="about">
         <h1 class="title">${langDict.aboutTexts.title}</h1>
         <span class="keywords">${PreviewUtils.joinKeywords(aboutSection.keywords)}</span>
         <ul class="content">
@@ -20,8 +19,7 @@ export class AboutUpdater {
         .reduce((acc, desc) => acc + AboutUpdater.#renderItem(desc), '')
       }
         </ul>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'about', html);
   }

@@ -5,8 +5,7 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 export class HeaderUpdater {
   static #renderWhatsapp(contact, templateConfig) {
     if (!contact.whatsapp?.value) return '';
-    return `
-      <li class="whatsapp">
+    return `<li class="whatsapp">
         <a href="https://wa.me/${contact.whatsapp.value}" target="_blank">
           ${Icons.whatsappIcon(templateConfig)}
           ${phoneMasker(contact.whatsapp.value)}
@@ -16,8 +15,7 @@ export class HeaderUpdater {
 
   static #renderEmail(contact, templateConfig) {
     if (!contact.email?.value) return '';
-    return `
-      <li class="email">
+    return `<li class="email">
         <a href="mailto:${contact.email.value}">
           ${Icons.envelopeIcon(templateConfig)}
           ${contact.email.value}
@@ -27,8 +25,7 @@ export class HeaderUpdater {
 
   static #renderAddress(contact, templateConfig) {
     if (!contact.address?.value) return '';
-    return `
-      <li class="address">
+    return `<li class="address">
         <a href="https://maps.google.com/?q=${contact.address.value}" target="_blank">
           ${Icons.locationIcon(templateConfig)}
           ${contact.address.value}
@@ -38,8 +35,7 @@ export class HeaderUpdater {
 
   static #renderGithub(contact, templateConfig) {
     if (!contact.github?.ref) return '';
-    return `
-      <li class="github">
+    return `<li class="github">
         <a href="${contact.github.ref}" target="_blank">
           ${Icons.githubIcon(templateConfig)}
           ${contact.github.value || contact.github.ref}
@@ -49,8 +45,7 @@ export class HeaderUpdater {
 
   static #renderLinkedin(contact, templateConfig) {
     if (!contact.linkedin?.ref) return '';
-    return `
-      <li class="linkedin">
+    return `<li class="linkedin">
         <a href="${contact.linkedin.ref}" target="_blank">
           ${Icons.linkedinIcon(templateConfig)}
           ${contact.linkedin.value || contact.linkedin.ref}
@@ -61,12 +56,11 @@ export class HeaderUpdater {
   static #renderPersonal(contact, templateConfig) {
     if (!contact.personal?.length) return '';
     return contact.personal
-      .filter(p => p.ref)
-      .reduce((acc, p) => acc + `
-        <li class="site">
-          <a href="${p.ref}" target="_blank">
+      .filter(link => link.ref)
+      .reduce((acc, link) => acc + `<li class="site">
+          <a href="${link.ref}" target="_blank">
             ${Icons.siteIcon(templateConfig)}
-            ${p.value || p.ref}
+            ${link.value || link.ref}
           </a>
         </li>`, '')
   }
@@ -90,12 +84,10 @@ export class HeaderUpdater {
       return;
     }
 
-    const html = `
-      <section id="header">
+    const html = `<section id="header">
         <h1 class="title">${headerSection.header.name}</h1>
         ${HeaderUpdater.#renderContacts(headerSection.contact, templateConfig)}
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'header', html);
   }

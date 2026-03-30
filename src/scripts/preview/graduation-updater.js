@@ -3,8 +3,7 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class GraduationUpdater {
   static #renderItem(graduation, langDict, templateConfig) {
-    return `
-      <li>
+    return `<li>
         <article class="graduations">
           <h1 class="graduations-title">
             ${Icons.institutionIcon(templateConfig)} ${graduation.title}
@@ -19,8 +18,7 @@ export class GraduationUpdater {
             <p>${graduation.description}</p>
           </div>
         </article>
-      </li>
-    `;
+      </li>`;
   }
 
   static update(doc, graduationSection, langDict, templateConfig) {
@@ -29,14 +27,12 @@ export class GraduationUpdater {
       return;
     }
 
-    const html = `
-      <section id="graduations">
+    const html = `<section id="graduations">
         <h1 class="title">${langDict.graduationTexts.title}</h1>
         <ul class="graduations-list">
           ${PreviewUtils.orderArray(graduationSection.graduations).reduce((acc, graduation) => acc + GraduationUpdater.#renderItem(graduation, langDict, templateConfig), '')}
         </ul>
-      </section>
-    `;
+      </section>`;
 
     PreviewUtils.insertOrUpdateSection(doc, 'graduations', html);
   }
