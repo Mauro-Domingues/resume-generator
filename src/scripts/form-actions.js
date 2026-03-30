@@ -1,24 +1,18 @@
 import { DataCollector } from './data-collector.js?v=1.0.0';
-import { RegisterTemplate } from './register-template.js?v=1.0.0';
 import { PersistenceManager } from './persistence.js?v=1.0.0';
 import { Validator } from './validator.js?v=1.0.0';
+import { PreviewManager } from './preview/preview-manager.js?v=1.0.0';
 
 export class FormActions {
-  #registerTemplate;
   #sectionManagers;
 
   constructor(sectionManagers = {}) {
-    this.#registerTemplate = new RegisterTemplate();
     this.#sectionManagers = sectionManagers;
   }
 
   async #updatePreview() {
     const variables = DataCollector.collect();
-    const previewFrame = document.querySelector('#previewFrame');
-
-    if (previewFrame) {
-      previewFrame.srcdoc = await this.#registerTemplate.getContent(variables);
-    }
+    await PreviewManager.update(variables);
   }
 
   #saveFormData() {
