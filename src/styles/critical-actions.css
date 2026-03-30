@@ -27,9 +27,3 @@ header::after {
     pointer-events: none;
     filter: blur(2.5rem);
 }
-
-.skip-link:focus {
-    top: 0;
-    outline: 0.1875rem solid var(--color-accent);
-    outline-offset: 0.125rem;
-}

@@ -81,21 +81,6 @@ html {
     color: var(--color-white);
 }
 
-.skip-link {
-    position: absolute;
-    top: -6.25rem;
-    left: 0;
-    background: var(--color-primary);
-    color: var(--color-white);
-    padding: var(--space-lg) var(--space-xl);
-    text-decoration: none;
-    border-radius: 0 0 var(--radius-md) 0;
-    font-weight: 600;
-    z-index: 10000;
-    transition: top var(--transition-fast);
-    box-shadow: 0 0.75rem 2rem 0 color-mix(in srgb, var(--color-text-primary) 12%, transparent);
-}
-
 .visually-hidden {
     position: absolute;
     width: 0.0625rem;
