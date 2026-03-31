@@ -33,9 +33,11 @@
   <link rel="stylesheet" href="./src/styles/root.css?v=1.0.0" />
   <link rel="stylesheet" href="./src/styles/critical.css?v=1.0.0" />
   <link rel="stylesheet" href="./src/styles/responsive.css?v=1.0.0" />
-  <link rel="stylesheet" href="./src/styles/buttons.css?v=1.0.0" />
-  <link rel="stylesheet" href="./src/styles/navigation.css?v=1.0.0" />
-  <link rel="stylesheet" href="./src/styles/components.css?v=1.0.0" />
+
+  <link rel="preload" href="./src/styles/buttons.css?v=1.0.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="./src/styles/navigation.css?v=1.0.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="./src/styles/components.css?v=1.0.0" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
   <link rel="stylesheet" href="./src/styles/critical-actions.css?v=1.0.0" media="print" onload="this.media='all'" />
   <link rel="stylesheet" href="./src/styles/buttons-actions.css?v=1.0.0" media="print" onload="this.media='all'" />
   <link rel="stylesheet" href="./src/styles/navigation-actions.css?v=1.0.0" media="print" onload="this.media='all'" />
@@ -43,6 +45,9 @@
   <link rel="stylesheet" href="./src/styles/keyframes.css?v=1.0.0" media="print" onload="this.media='all'" />
 
   <noscript>
+    <link rel="stylesheet" href="./src/styles/buttons.css?v=1.0.0" />
+    <link rel="stylesheet" href="./src/styles/navigation.css?v=1.0.0" />
+    <link rel="stylesheet" href="./src/styles/components.css?v=1.0.0" />
     <link rel="stylesheet" href="./src/styles/critical-actions.css?v=1.0.0" />
     <link rel="stylesheet" href="./src/styles/buttons-actions.css?v=1.0.0" />
     <link rel="stylesheet" href="./src/styles/navigation-actions.css?v=1.0.0" />
