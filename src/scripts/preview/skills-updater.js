@@ -34,7 +34,7 @@ export class SkillsUpdater {
         <span class="keywords">${PreviewUtils.joinKeywords(skillSection.keywords)}</span>
         <div class="content">
           <ul class="skill-list">
-            ${this.#orderArray(skillSection.skill).reduce((acc, skill) => acc + SkillsUpdater.#renderItem(skill, langDict), '')}
+            ${this.#orderArray(skillSection.skills).reduce((acc, skill) => acc + SkillsUpdater.#renderItem(skill, langDict), '')}
           </ul>
         </div>
       </section>`;
