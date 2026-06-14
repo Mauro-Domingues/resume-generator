@@ -3,7 +3,7 @@
   align-items: center;
 }
 
-#about>.description {
+#about>.description-list {
   display: flex;
   flex-direction: column;
   gap: 0.625rem;

@@ -2,7 +2,7 @@ import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class AboutUpdater {
   static #renderItem(desc) {
-    return `<li>${desc}</li>`;
+    return `<li class="description-tag">${desc}</li>`;
   }
 
   static update(doc, aboutSection, langDict) {
@@ -14,7 +14,7 @@ export class AboutUpdater {
     const html = `<section id="about">
         <h1 class="title">${langDict.aboutTexts.title}</h1>
         <span class="keywords">${PreviewUtils.joinKeywords(aboutSection.keywords)}</span>
-        <ul class="content">
+        <ul class="description-list">
           ${aboutSection.descriptions
         .reduce((acc, desc) => acc + AboutUpdater.#renderItem(desc), '')
       }
