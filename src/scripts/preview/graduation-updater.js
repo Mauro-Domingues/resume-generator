@@ -13,7 +13,7 @@ export class GraduationUpdater {
             <p>${langDict.graduationTexts.content.title}: </p>
             <p>${graduation.institution}</p>
             <p>${langDict.graduationTexts.content.period}: </p>
-            <p>${PreviewUtils.formatPeriod(templateConfig, graduation, langDict)}</p>
+            <p>${PreviewUtils.formatPeriod(graduation, langDict)}</p>
             <p>${langDict.graduationTexts.content.description}: </p>
             <p>${graduation.description}</p>
           </div>

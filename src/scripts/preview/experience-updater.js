@@ -13,7 +13,7 @@ export class ExperienceUpdater {
             <p>${langDict.experienceTexts.content.title}: </p>
             <p>${experience.company}</p>
             <p>${langDict.experienceTexts.content.period}: </p>
-            <p>${PreviewUtils.formatPeriod(templateConfig, experience, langDict)}</p>
+            <p>${PreviewUtils.formatPeriod(experience, langDict)}</p>
             <p>${langDict.experienceTexts.content.description}: </p>
             <p>${experience.description}</p>
           </div>

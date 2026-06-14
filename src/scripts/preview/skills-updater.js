@@ -1,10 +1,26 @@
 import { PreviewUtils } from './utils.js?v=1.0.0';
 
 export class SkillsUpdater {
+  static #levelOrder = [
+    'specialized',
+    'advanced-specialized',
+    'advanced',
+    'average-advanced',
+    'average',
+    'basic-average',
+    'basic',
+  ];
+
   static #renderItem(skill, langDict) {
     return `<li>
         <span>${skill.title} - ${langDict.skillTexts.options[skill.level]}</span>
       </li>`;
+  }
+
+  static #orderArray(skills = []) {
+    return skills.sort((a, b) => {
+      return this.#levelOrder.indexOf(a.level) - this.#levelOrder.indexOf(b.level);
+    })
   }
 
   static update(doc, skillSection, langDict) {
@@ -18,7 +34,7 @@ export class SkillsUpdater {
         <span class="keywords">${PreviewUtils.joinKeywords(skillSection.keywords)}</span>
         <div class="content">
           <ul class="skill-list">
-            ${PreviewUtils.orderArray(skillSection.skills).reduce((acc, skill) => acc + SkillsUpdater.#renderItem(skill, langDict), '')}
+            ${this.#orderArray(skillSection.skill).reduce((acc, skill) => acc + SkillsUpdater.#renderItem(skill, langDict), '')}
           </ul>
         </div>
       </section>`;

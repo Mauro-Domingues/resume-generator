@@ -1,6 +1,5 @@
 export class PreviewUtils {
-  static orderArray(data) {
-    if (!data) return [];
+  static orderArray(data = []) {
     return data.sort((a, b) => {
       if (a.currently && !b.currently) return -1;
       if (!a.currently && b.currently) return 1;
@@ -13,7 +12,7 @@ export class PreviewUtils {
     });
   }
 
-  static formatPeriod(templateConfig, item, langDict) {
+  static formatPeriod(item, langDict) {
     const locale = langDict.period.format;
     const dateOptions = { year: 'numeric', month: 'long' };
 
