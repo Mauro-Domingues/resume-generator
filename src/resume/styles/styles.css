@@ -48,10 +48,6 @@ ul {
   margin: 0.625rem 0 0 0;
 }
 
-@page :first {
-  margin-top: 0;
-}
-
 @media print {
   body {
     transform: none !important;
